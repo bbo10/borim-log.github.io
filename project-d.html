@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project - 이동할 가치가 있는 주유소는 어디인가?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About Me</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="study.html">Study</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+<div class="content-container">
+<div class="project-detail-container">
+
+<h1>“대전 단골 주유소, 정말 항상 이득일까?”</h1>
+
+<div class="project-period">
+    <p>프로젝트 기간: 2026.01.02 ~ 2026.01.20</p>
+</div>
+
+<p style="text-align:center;">
+<strong>
+운전 중 주유가 필요할 때,  
+“오송에서 바로 넣을까, 아니면 대전에 자주 가는 저렴한 주유소까지 갈까?”  
+이 질문에서 프로젝트가 시작되었습니다.
+</strong>
+</p>
+
+<p class="sub-text" style="text-align:center;">
+리터당 가격만으로는 판단이 어려웠습니다.  
+이동 거리, 연비, 포인트 혜택을 모두 고려한 계산 구조가 필요했습니다.
+</p>
+
+<!-- Slideshow 1 -->
+<div class="slideshow-container" style="max-width: 800px; position: relative; margin: 20px auto;">
+  <div class="mySlides slides-1 fade">
+    <img src="assets/project-d-images/111.png" style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
+  </div>
+  <div class="mySlides slides-1 fade">
+    <img src="assets/project-d-images/222.png" style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
+  </div>
+  <div class="mySlides slides-1 fade">
+    <img src="assets/project-d-images/333.png" style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
+  </div>
+  <div class="mySlides slides-1 fade">
+    <img src="assets/project-d-images/444.png" style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
+  </div>
+
+  <a class="prev" onclick="plusSlides(-1, 'slides-1')">&#10094;</a>
+  <a class="next" onclick="plusSlides(1, 'slides-1')">&#10095;</a>
+</div>
+
+<h2>1. 문제 정의: 가격은 항상 정답이 아니었다</h2>
+
+<!-- Slideshow 2 -->
+<div class="slideshow-container" style="max-width: 800px; position: relative; margin: 20px auto;">
+  <div class="mySlides slides-2 fade">
+    <img src="assets/project-d-images/555.jpg"
+         class="small-slide-img"
+         onclick="openModal(this)">
+  </div>
+
+  <div class="mySlides slides-2 fade">
+    <img src="assets/project-d-images/666.jpg"
+         class="small-slide-img"
+         onclick="openModal(this)">
+  </div>
+
+  <a class="prev" onclick="plusSlides(-1, 'slides-2')">&#10094;</a>
+  <a class="next" onclick="plusSlides(1, 'slides-2')">&#10095;</a>
+</div>
+
+<p>
+대전 단골 주유소는 리터당 가격이 더 저렴해 보였습니다.
+하지만 단순 가격 비교는 중요한 요소를 빠뜨리고 있었습니다.
+</p>
+
+<ul>
+    <li>이동 거리 (km)</li>
+    <li>연비 (km/L)</li>
+    <li>현재 유가 (원/L)</li>
+    <li>포인트 및 멤버십 혜택 (원/L)</li>
+</ul>
+
+<p><strong>
+“몇 km까지 더 가는 것이 실제로 이득인가?”  
+이 질문에 수치로 답하고 싶었습니다.
+</strong></p>
+
+<p>
+기존에는 “리터당 가격이 싼 곳”을 선택하는 단순 전략을 사용했습니다.
+그러나 이동 거리가 길어질수록, 실제로는 오히려 총비용이 증가할 가능성이 있었습니다.
+이 직관을 검증하기 위해 계산 구조를 만들었습니다.
+</p>
+
+<h2>2. 해결 전략: 실질 총비용(Net Total Cost) 정의</h2>
+
+<h3>실질 체감 단가 vs 거리</h3>
+<img src="assets/project-d-images/111.png"
+     class="article-image"
+     onclick="openModal(this)">
+
+<h3>① 이동비(Detour Cost) 수치화</h3>
+<p>
+왕복 거리 / 연비 × 해당 주유소 가격  
+→ 거리를 ‘돈’으로 환산
+</p>
+<p class="sub-text">
+직선거리(Haversine)에 보정계수 1.3을 적용해 실제 도로 주행 환경을 근사했습니다.
+</p>
+
+<h3>② 브랜드 혜택 반영</h3>
+<p>
+Net Price = 판매가 − 리터당 포인트 가치
+</p>
+
+<h3>③ 최종 판단 공식</h3>
+
+<p><strong>
+Net Total Cost = (주유비 + 이동비 − 총 혜택)
+</strong></p>
+
+<p>
+이 값을 최소화하는 주유소가 “이동할 가치가 있는 주유소”입니다.
+</p>
+
+<h2>3. 숫자로 증명된 의사결정 변화</h2>
+
+<h3>전략 비교 요약 (근거리 vs 최저가 vs 실질 최적화)</h3>
+<p class="sub-text">
+  동일한 기간(52주) 동안 3가지 전략의 연간 총비용을 비교했습니다.
+  “싼 곳”이 아니라 “이동비까지 포함한 실질 총비용” 기준으로 판단했을 때, 선택이 달라졌습니다.
+</p>
+
+<table class="tech-stack-table">
+  <thead>
+    <tr>
+        <td><strong>근거리 전략</strong></td>
+        <td>거리 최소(가까운 주유소)</td>
+        <td><strong>4,429,139</strong></td>
+        <td>가장 직관적인 선택</td>
+        </tr>
+
+        <tr>
+        <td><strong>최저가 전략</strong></td>
+        <td>리터당 가격 최소</td>
+        <td><strong>4,557,055</strong></td>
+        <td>이동비 미고려 시 비용 왜곡 가능</td>
+        </tr>
+
+        <tr>
+        <td><strong>실질 최적화</strong></td>
+        <td>Net Total Cost 최소</td>
+        <td><strong>4,307,909</strong></td>
+        <td>
+            <span style="color:#007BFF; font-weight:700;">
+            근거리 대비 121,230원 절감 (2.74%)
+            </span><br>
+            <span style="color:#007BFF; font-weight:700;">
+            최저가 대비 249,146원 절감 (5.47%)
+            </span>
+        </td>
+        </tr>
+  </tbody>
+</table>
+
+<p class="sub-text">
+100회 반복 시뮬레이션 평균 결과, 실질 최적화 전략은 근거리 전략 대비 평균 121,230원(2.74%) 절감 효과를 보였으며, 95% 신뢰구간 ±1,360원 내에서 안정적인 결과를 확인했습니다.
+</p>
+
+<h3>연간 누적 절감 효과</h3>
+<img src="assets/project-d-images/222.png"
+     class="article-image"
+     onclick="openModal(this)">
+
+<h3> 50L 주유 기준</h3>
+
+<ul>
+    <li>전체 평균 실질 비용: <strong>90,018원</strong></li>
+    <li>최적 주유소 실질 비용: <strong>82,237원</strong></li>
+    <li>1회 절감액: <strong>7,781원</strong></li>
+</ul>
+
+<h3> 연간(52주) 환산</h3>
+
+<ul>
+    <li>연간 절감액: <strong>404,589원</strong></li>
+    <li>근거리 전략 대비: <strong>2.5% 비용 개선</strong></li>
+</ul>
+
+<p>
+가격만 보고 이동했다면 이 차이를 체감하기 어려웠을 것입니다.
+</p>
+
+<h2>4. 빠른 시뮬레이션 구조</h2>
+
+<p>
+이 프로젝트의 핵심은 모델이 아니라  
+<strong>조건을 입력하면 즉시 판단이 가능하도록 만드는 구조</strong>였습니다.
+</p>
+
+<ul>
+    <li>연비 입력</li>
+    <li>주유량 입력</li>
+    <li>S-OIL 등급 반영</li>
+    <li>왕복 이동비 자동 계산</li>
+</ul>
+
+<p>
+운전 중에도 “오늘은 어디가 이득인가?”를 빠르게 계산할 수 있도록 설계했습니다.
+</p>
+
+<h2>5. 가드레일: 몇 km까지 이동할 가치가 있는가?</h2>
+
+<h3>손익분기점 분석</h3>
+<img src="assets/project-d-images/333.png"
+     class="article-image"
+     onclick="openModal(this)">
+
+<p>
+
+이동에는 항상 한계가 있습니다.
+</p>
+
+<p><strong>
+1km 추가 이동 시 최소 4.5원/L 이상 싸야 이득입니다.
+</strong></p>
+
+<p>
+5km라면 22.7원/L,  
+10km라면 45.4원/L 이상 차이가 나야 합니다.
+</p>
+
+<p>
+ML 확률이 높더라도 손익분기점을 넘지 못하면 추천에서 제외했습니다.
+</p>
+
+<h2>6. (Appendix) 데이터 정합성 이슈</h2>
+
+<p class="sub-text">
+추천 로직 이전에 지도 데이터와 OpiNet 데이터의 정합성 확보가 필요했습니다.
+초기 매칭은 0건이었고, 원인은 OpiNet KATEC 좌표의 비표준 Datum 문제였습니다.
+</p>
+
+<p class="sub-text">
+고정 오프셋(Lon 1.256380 / Lat 0.889078)을 적용해  
+오차를 149km → 0.05m 수준으로 줄였고, 매칭을 성공시켰습니다.
+</p>
+
+<p>
+이 문제 해결 과정은, 추천 로직 이전에 데이터 정합성이 얼마나 중요한지 보여주는 사례였습니다.
+</p>
+
+<h2>7. 활용 기술 (Technical Skills)</h2>
+
+<div class="tech-tags">
+    <span class="tech-tag">Python</span>
+    <span class="tech-tag">Kakao API</span>
+    <span class="tech-tag">OpiNet API</span>
+    <span class="tech-tag">pyproj</span>
+    <span class="tech-tag">Feature Engineering</span>
+    <span class="tech-tag">Random Forest</span>
+    <span class="tech-tag">Folium</span>
+</div>
+
+</div>
+</div>
+</main>
+
+
+<script>
+// 그룹별 현재 슬라이드 번호 저장
+const slideIndex = {
+  "slides-1": 1,
+  "slides-2": 1
+};
+
+function showSlides(n, groupClass) {
+  const slides = document.getElementsByClassName(groupClass);
+
+  if (!slides || slides.length === 0) return;
+
+  if (n > slides.length) slideIndex[groupClass] = 1;
+  if (n < 1) slideIndex[groupClass] = slides.length;
+
+  // 해당 그룹만 숨기기
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  slides[slideIndex[groupClass] - 1].style.display = "block";
+}
+
+function plusSlides(n, groupClass) {
+  showSlides(slideIndex[groupClass] += n, groupClass);
+}
+
+// 페이지 로드시 각각 첫 장 보여주기
+document.addEventListener("DOMContentLoaded", () => {
+  showSlides(1, "slides-1");
+  showSlides(1, "slides-2");
+});
+</script>
+
+<!-- Image Modal -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+
+<script>
+function openModal(img) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+
+  modal.style.display = "block";
+  modalImg.src = img.src;
+}
+
+function closeModal() {
+  document.getElementById("imageModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
