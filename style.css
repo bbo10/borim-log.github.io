@@ -447,6 +447,11 @@ section h2 {
     margin-bottom: 8px;
 }
 
+
+
+
+
+
 /* --- Contact Section --- */
 #contact {
     background-color: var(--card-bg-color);
@@ -774,6 +779,7 @@ section h2 {
     margin-top: auto; /* Push tags to the bottom */
 }
 
+
 .cta-button {
     display: inline-block;
     background-color: var(--accent-color);
@@ -928,4 +934,18 @@ section h2 {
     .project-card h3 {
         font-size: 1.3rem;
     }
+}
+
+.small-slide-img {
+  width: 70%;          /* 크기 줄이기 */
+  max-width: 500px;    /* 최대 크기 제한 */
+  display: block;
+  margin: 0 auto;
+  cursor: zoom-in;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.small-slide-img:hover {
+  transform: scale(1.03);
 }
