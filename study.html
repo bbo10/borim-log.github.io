@@ -8,21 +8,23 @@
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="hamburger-menu">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About Me</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="study.html">Study</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+  <nav>
+    <button class="hamburger-menu" aria-label="메뉴 열기">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </button>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./index.html#about">About Me</a></li>
+      <li><a href="./index.html#strengths">Strenghts</a></li>
+      <li><a href="./portfolio.html">Portfolio</a></li>
+      <li><a href="./study.html">Study</a></li>
+      <li><a href="./index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
     <main>
         <div class="content-container">
@@ -36,16 +38,38 @@
                         </div>
                         <div class="study-item-content">
                             <h3>포트폴리오 웹사이트 제작기</h3>
-                            <p>막힘과 깨달음을 반복하며 HTML과 CSS의 기본 원리를 되짚고, 포트폴리오 웹사이트를 완성한 과정을 기록합니다. 클래스 충돌, Flexbox 구조, 캐시 문제를 해결하며 기초의 힘을 깊이 깨달았습니다.</p>
+                            <p>
+                            HTML/CSS 기반 포트폴리오 웹사이트를 제작하며 발생한 실제 개발 문제를 분석하고 해결한 기록입니다.
+                            CSS 우선순위 충돌, Flexbox 레이아웃 구조 문제, 클래스 네이밍 충돌, 배포 후 캐시 이슈 등을
+                            개발자 도구를 활용해 원인 중심으로 해결하며 웹 개발의 기본 동작 원리를 정리했습니다.
+                            </p>
                             <div class="tech-tags">
                                 <span class="tech-tag">HTML</span>
                                 <span class="tech-tag">CSS</span>
                                 <span class="tech-tag">Flexbox</span>
+                                <span class="tech-tag">JavaScript</span>
                             </div>
                         </div>
                     </div>
                 </a>
                 
+                <!-- 학습 기록 2: 새로운 학습 -->
+                <a href="study-temp.html" class="study-item-link">
+                    <div class="study-item">
+                        <div class="study-thumbnail">
+                            <img src="assets/study/placeholder.png" alt="새로운 학습 기록">
+                        </div>
+                        <div class="study-item-content">
+                            <h3>새로운 학습 기록</h3>
+                            <p>새로운 학습 기록에 대한 설명을 추가해주세요.</p>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Tech1</span>
+                                <span class="tech-tag">Tech2</span>
+                                <span class="tech-tag">Tech3</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </main>
