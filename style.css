@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
+/* =========================================================
+   1. GLOBAL
+========================================================= */
 :root {
     --main-bg-color: #F8F9FA;
     --card-bg-color: #FFFFFF;
@@ -9,6 +12,13 @@
     --accent-color-hover: #0056b3;
     --light-border-color: #DEE2E6;
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --section-padding: 70px;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 html {
@@ -17,10 +27,27 @@ html {
 
 body {
     margin: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
     background-color: var(--main-bg-color);
     color: var(--primary-text-color);
     line-height: 1.6;
+    word-break: keep-all;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }
 
 /* --- Header & Navigation --- */
@@ -29,30 +56,30 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    height: 65px;
+    background-color: rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--light-border-color);
     z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 65px;
     transition: box-shadow 0.3s ease;
 }
 
 nav {
     max-width: 1100px;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    position: relative;
 }
 
 nav ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
 }
 
@@ -61,7 +88,6 @@ nav li {
 }
 
 nav a {
-    text-decoration: none;
     color: var(--secondary-text-color);
     font-size: 16px;
     font-weight: 600;
@@ -91,7 +117,7 @@ nav a:hover::after {
 }
 
 .hamburger-menu {
-    display: none; /* Hidden by default */
+    display: none;
     cursor: pointer;
     padding: 15px;
     position: absolute;
@@ -99,6 +125,8 @@ nav a:hover::after {
     top: 50%;
     transform: translateY(-50%);
     z-index: 1001;
+    border: none;
+    background: transparent;
 }
 
 .hamburger-menu .line {
@@ -109,20 +137,10 @@ nav a:hover::after {
     transition: 0.4s;
 }
 
-@media (max-width: 768px) {
-    .hamburger-menu {
-        display: block; /* Show hamburger menu */
-    }
-
-    nav ul.active {
-        display: flex;
-    }
-}
-
-/* --- Main Content & Sections --- */
+/* --- Main Layout --- */
 main {
     width: 100%;
-    padding-top: 50px;
+    padding-top: 65px;
 }
 
 section {
@@ -130,13 +148,13 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px 20px;
-    box-sizing: border-box;
+    padding: var(--section-padding) 20px;
     text-align: center;
 }
 
 .section-inner {
     max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 20px;
     text-align: center;
@@ -152,7 +170,15 @@ section h2 {
     display: inline-block;
 }
 
-/* --- Section Specific Backgrounds --- */
+.section-description {
+    max-width: 760px;
+    margin: 0 auto 36px;
+    color: var(--secondary-text-color);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* --- Shared Backgrounds --- */
 #home {
     background-color: var(--main-bg-color);
     min-height: calc(100vh - 65px);
@@ -164,6 +190,14 @@ section h2 {
     background-color: var(--card-bg-color);
 }
 
+#strengths {
+    background-color: var(--main-bg-color);
+}
+
+#skills {
+    background-color: var(--card-bg-color);
+}
+
 #projects {
     background-color: var(--main-bg-color);
 }
@@ -172,20 +206,103 @@ section h2 {
     background-color: var(--card-bg-color);
 }
 
-/* --- Hero Section (Home) --- */
+/* =========================================================
+   2. INDEX PAGE
+========================================================= */
+
+/* --- Hero Section --- */
 #home h1 {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 16px;
+    line-height: 1.25;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.hero-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
 }
 
 .hero-intro {
     font-size: 1.25rem;
     margin-bottom: 30px;
     color: var(--secondary-text-color);
+    line-height: 1.8;
 }
 
-/* --- About Me Section --- */
+.hero-keywords {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 28px 0 36px;
+}
+
+.hero-keywords span {
+    background-color: #e9f2ff;
+    color: var(--accent-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 999px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hero-btn.primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.hero-btn.primary:hover {
+    background-color: var(--accent-color-hover);
+    transform: translateY(-2px);
+}
+
+.hero-btn.secondary {
+    border: 1px solid var(--light-border-color);
+    background-color: white;
+    color: var(--primary-text-color);
+}
+
+.hero-btn.secondary:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* --- About Section --- */
+.about-left {
+    text-align: left;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.about-keywords {
+    margin-bottom: 20px;
+}
+
 .about-keywords h3 {
     font-size: 1.6rem;
     font-weight: 700;
@@ -194,69 +311,111 @@ section h2 {
 
 .about-summary p {
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.8;
+    color: var(--secondary-text-color);
+    margin-bottom: 16px;
 }
 
-.skills-container {
+/* --- Strengths Section --- */
+.strengths-container {
     display: flex;
-    justify-content: space-between;
-    gap: 30px;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
     margin-top: 30px;
-    text-align: center;
+}
+
+.strength-card {
+    flex: 1 1 280px;
+    max-width: 340px;
+    background-color: var(--card-bg-color);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    box-shadow: var(--card-shadow);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.strength-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.strength-card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.strength-card p {
+    margin: 0;
+    color: var(--secondary-text-color);
+    line-height: 1.7;
+}
+
+/* --- Skills Section --- */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+    text-align: left;
 }
 
 .skill-category {
-    flex: 1;
-    max-width: 300px;
-    padding: 10px;
+    background-color: var(--card-bg-color);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--card-shadow);
     position: relative;
+}
+
+.skill-category h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.skill-category p {
+    margin: 0;
+    color: var(--secondary-text-color);
+    line-height: 1.7;
 }
 
 .skill-underline {
     width: 40px;
     height: 3px;
-    background-color: #000;
-    margin: 0 auto 12px auto;
+    background-color: var(--accent-color);
+    margin: 0 0 14px 0;
 }
 
-/* --- Projects Section --- */
-#projects h2 {
-    font-size: 2rem;
-    color: var(--primary-text-color);
-    margin-top: 0;
-    margin-bottom: 40px;
-    border-bottom: 3px solid var(--accent-color);
-    padding-bottom: 10px;
-    display: inline-block; /* 핵심 */
-}
-
-  .project-period {
-    text-align: right;
-  }
-
+/* --- Featured Projects Section --- */
 .project-container {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 30px;
-    width: 960px; /* (300px card * 3) + (30px gap * 2) */
+    width: 100%;
+    max-width: 960px;
     margin: 0 auto;
 }
 
 .project-card {
     background-color: var(--card-bg-color);
     color: var(--primary-text-color);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     padding: 30px;
-    width: 300px;
     box-sizing: border-box;
     box-shadow: var(--card-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-left-color 0.3s ease;
     text-align: left;
     border-left: 5px solid transparent;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
-    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
     transform: translateY(-5px);
     border-left-color: var(--accent-color);
 }
@@ -274,11 +433,13 @@ section h2 {
     font-size: 1rem;
     margin-bottom: 20px;
     color: var(--secondary-text-color);
+    flex-grow: 1;
+    line-height: 1.75;
 }
 
 .project-card a {
+    align-self: flex-start;
     color: var(--accent-color);
-    text-decoration: none;
     font-weight: 600;
     background-color: transparent;
     padding: 8px 15px;
@@ -292,26 +453,66 @@ section h2 {
     color: white;
 }
 
-
 /* --- Contact Section --- */
-#contact p {
-    font-size: 1.1rem;
+#contact p,
+.contact-note {
+    font-size: 1.05rem;
+    color: var(--secondary-text-color);
     line-height: 1.8;
 }
 
-/* --- Portfolio Page: List View --- */
+/* =========================================================
+   3. CONTENT PAGES (Portfolio / Study / Project Detail)
+========================================================= */
+
+/* --- Shared Content Pages --- */
+.content-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.content-container > h1 {
+    text-align: center;
+    font-size: 2.4rem;
+    margin: 0 0 40px;
+    font-weight: 700;
+}
+
+.content-card {
+    background-color: var(--card-bg-color);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    box-shadow: var(--card-shadow);
+    text-align: left;
+}
+
+.content-card h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* --- Portfolio List Page --- */
 .portfolio-grid {
     display: flex;
-    flex-direction: column; /* 다시 수직 정렬로 변경 */
+    flex-direction: column;
     gap: 40px;
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 20px 0 0;
+}
+
+.portfolio-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .portfolio-item {
     background-color: var(--card-bg-color);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     padding: 35px;
     box-shadow: var(--card-shadow);
     border-left: 5px solid var(--accent-color);
@@ -319,46 +520,52 @@ section h2 {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    /* height: 500px; */ /* 고정 높이 제거 */
 }
 
 .portfolio-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-}
-
-.portfolio-item-link {
-    text-decoration: none;
-    color: inherit;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
 .portfolio-item h2 {
     margin-top: 0;
     margin-bottom: 12px;
-    font-size: 1.5rem; /* 크기 조정 */
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-text-color);
-    border-bottom: none; /* 상세 페이지와 달리 밑줄 제거 */
+    border-bottom: none;
     padding-bottom: 0;
+    line-height: 1.45;
 }
 
 .portfolio-item p {
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+.portfolio-item ul {
+    list-style: disc;
+    padding-left: 1.4rem;
+    margin: 0;
+}
+
+.portfolio-item li {
+    margin-bottom: 0.6rem;
     line-height: 1.7;
-    margin-bottom: 15px;
+    color: var(--secondary-text-color);
 }
 
 .portfolio-item .tech-tags {
-    margin-top: auto; /* 기술 태그는 항상 아래에 위치 */
+    margin-top: auto;
 }
 
 .read-more-link {
     text-align: right;
-    margin-top: 20px;
+    margin-top: 8px;
 }
 
 .read-more-link a {
     color: var(--accent-color);
-    text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
@@ -371,7 +578,7 @@ section h2 {
 /* --- Project Detail Pages --- */
 .project-detail-container {
     background-color: var(--card-bg-color);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     padding: 40px;
     box-shadow: var(--card-shadow);
     text-align: left;
@@ -384,6 +591,7 @@ section h2 {
     margin-bottom: 1.5rem;
     margin-top: 1rem;
     text-align: center;
+    line-height: 1.35;
 }
 
 .project-detail-container h2 {
@@ -413,10 +621,11 @@ section h2 {
     font-weight: 700;
 }
 
-.project-detail-container ul, .project-detail-container ol {
+.project-detail-container ul,
+.project-detail-container ol {
     margin-left: 1.5rem;
     margin-bottom: 1rem;
-    padding-left: 1rem; /* 들여쓰기 추가 */
+    padding-left: 1rem;
 }
 
 .project-detail-container ul {
@@ -427,12 +636,20 @@ section h2 {
     list-style-type: decimal;
 }
 
-.project-detail-container ul ul, .project-detail-container ol ol {
+.project-detail-container ul ul,
+.project-detail-container ol ol {
     margin-top: 0.5rem;
 }
 
 .project-detail-container li {
-    margin-bottom: 0.75rem; /* 간격 조정 */
+    margin-bottom: 0.75rem;
+}
+
+.project-period {
+    text-align: right;
+    color: var(--secondary-text-color);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
 }
 
 .tech-tag {
@@ -447,28 +664,23 @@ section h2 {
     margin-bottom: 8px;
 }
 
-
-
-
-
-
-/* --- Contact Section --- */
-#contact {
-    background-color: var(--card-bg-color);
+.project-detail-container iframe {
+    width: 100%;
+    border: 2px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-sm);
+    background: #fff;
 }
 
-#contact p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-/* --- Carousel Styles --- */
+/* --- Carousel / Modal --- */
 .carousel {
     position: relative;
     max-width: 800px;
     margin: 20px auto;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     box-shadow: var(--card-shadow);
 }
 
@@ -484,8 +696,7 @@ section h2 {
 
 .carousel-item img {
     width: 100%;
-    display: block;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
 }
 
 .carousel-control {
@@ -515,41 +726,40 @@ section h2 {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Modal for image enlargement */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 2000; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 2000;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-    backdrop-filter: blur(5px); /* Blur effect for shadowing */
-    -webkit-backdrop-filter: blur(5px); /* Safari support */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     align-items: center;
     justify-content: center;
 }
 
 .modal-content {
     margin: auto;
-    display: block;
     width: 80%;
     max-width: 900px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    border-radius: var(--radius-sm);
     transition: transform 0.3s ease-out;
 }
 
-.modal-content, #caption {
+.modal-content,
+#caption {
     animation-name: zoom;
     animation-duration: 0.6s;
 }
 
 @keyframes zoom {
-    from {transform: scale(0)}
-    to {transform: scale(1)}
+    from { transform: scale(0); }
+    to { transform: scale(1); }
 }
 
 .close {
@@ -565,11 +775,11 @@ section h2 {
 .close:hover,
 .close:focus {
     color: #bbb;
-    text-decoration: none;
     cursor: pointer;
 }
 
-.prev-modal, .next-modal {
+.prev-modal,
+.next-modal {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -580,9 +790,13 @@ section h2 {
     font-weight: bold;
     font-size: 20px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
     user-select: none;
     -webkit-user-select: none;
+}
+
+.prev-modal {
+    left: 0;
+    border-radius: 0 3px 3px 0;
 }
 
 .next-modal {
@@ -590,12 +804,9 @@ section h2 {
     border-radius: 3px 0 0 3px;
 }
 
-.prev-modal {
-    left: 0;
-}
-
-.prev-modal:hover, .next-modal:hover {
-    background-color: rgba(0,0,0,0.8);
+.prev-modal:hover,
+.next-modal:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .sub-text {
@@ -603,13 +814,14 @@ section h2 {
     color: #545454;
 }
 
-/* Segment-specific styles moved from project-b.html */
+/* --- Project-specific content helpers --- */
 .slide {
     width: 100%;
     position: relative;
     color: #212529;
     padding: 2rem 0;
 }
+
 .title {
     color: #007BFF;
     font-weight: 700;
@@ -617,46 +829,56 @@ section h2 {
     padding-bottom: 8px;
     margin-bottom: 15px;
 }
+
 .segment-table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 1rem;
 }
-.segment-table th, .segment-table td {
+
+.segment-table th,
+.segment-table td {
     border: 1px solid #DEE2E6;
     padding: 8px;
     font-size: 12px;
 }
+
 .segment-table th {
     background-color: #e6f2ff;
     text-align: center;
 }
+
 .concept-box {
     background-color: #f1f8ff;
     border-radius: 6px;
     padding: 10px;
     border: 1px solid #DEE2E6;
 }
+
 .warning {
     color: #0056b3;
     font-size: 14px;
 }
+
 .chart-container {
     position: relative;
-    height: 160px; /* This will be overridden by flex-grow in HTML */
+    height: 160px;
 }
+
 .section-heading {
     color: #007BFF;
     font-weight: 600;
     margin-bottom: 8px;
 }
 
-/* --- Slideshow Container (for project-c.html) --- */
+/* --- Slideshow --- */
 .slideshow-container {
     position: relative;
     margin: auto;
 }
 
-.slideshow-container .prev, .slideshow-container .next {
+.slideshow-container .prev,
+.slideshow-container .next {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -672,46 +894,40 @@ section h2 {
     transition: background-color 0.3s ease;
 }
 
-.slideshow-container .next {
-    right: 10px;
-}
-
 .slideshow-container .prev {
     left: 10px;
 }
 
-.slideshow-container .prev:hover, .slideshow-container .next:hover {
-    background-color: rgba(0,0,0,0.8);
+.slideshow-container .next {
+    right: 10px;
+}
+
+.slideshow-container .prev:hover,
+.slideshow-container .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}}
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
 
-  /* --- Content Pages (Portfolio, Study, etc.) --- */
-.content-container {
-    width: 100%;
-    max-width: 1100px;
+.small-slide-img {
+    width: 70%;
+    max-width: 500px;
     margin: 0 auto;
-    padding: 60px 20px;
+    cursor: zoom-in;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
 
-.content-card {
-    background-color: var(--card-bg-color);
-    border-radius: 12px;
-    padding: 40px;
-    box-shadow: var(--card-shadow);
-    text-align: left;
-}
-
-.content-card h1 {
-    text-align: center;
-    margin-bottom: 50px;
+.small-slide-img:hover {
+    transform: scale(1.03);
 }
 
 /* --- Study Page --- */
@@ -724,7 +940,6 @@ section h2 {
 }
 
 .study-item-link {
-    text-decoration: none;
     color: inherit;
     flex: 1 1 300px;
     max-width: 340px;
@@ -733,32 +948,33 @@ section h2 {
 
 .study-item {
     background-color: var(--card-bg-color);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     box-shadow: var(--card-shadow);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    height: 100%; /* Make cards in the same row have the same height */
+    height: 100%;
+    width: 100%;
 }
 
 .study-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
 .study-thumbnail img {
     width: 100%;
-    height: 200px; /* Fixed height for thumbnails */
-    object-fit: cover; /* Ensure images cover the area without distortion */
-    display: block;
+    height: 200px;
+    object-fit: cover;
 }
 
 .study-item-content {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Allow content to fill the remaining space */
+    flex-grow: 1;
+    text-align: left;
 }
 
 .study-item-content h3 {
@@ -766,66 +982,67 @@ section h2 {
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 10px;
+    line-height: 1.45;
 }
 
 .study-item-content p {
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.7;
     margin-bottom: 15px;
     flex-grow: 1;
+    color: var(--secondary-text-color);
 }
 
 .study-item-content .tech-tags {
-    margin-top: auto; /* Push tags to the bottom */
+    margin-top: auto;
 }
 
-
-.cta-button {
+/* --- Shared utility components --- */
+.cta-button,
+button[id^="toggleTechnicalSkills"] {
     display: inline-block;
     background-color: var(--accent-color);
     color: white;
     font-size: 1rem;
     font-weight: 600;
-    text-decoration: none;
-    padding: 10px 20px; /* 크기 살짝 줄임 */
-    border-radius: 8px;
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-    border: none; /* 윤곽선 제거 */
-    outline: none; /* 포커스 시 윤곽선 제거 */
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
-.cta-button:hover {
+.cta-button:hover,
+button[id^="toggleTechnicalSkills"]:hover {
     background-color: var(--accent-color-hover);
     transform: translateY(-2px);
 }
 
-/* --- Article Image Styles --- */
 .article-image {
-    display: block;
     margin: 20px auto;
     max-width: 100%;
-    max-height: 500px; /* Limit the visible height */
-    width: auto; /* Maintain aspect ratio */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    cursor: pointer; /* Change cursor to pointer on hover */
+    max-height: 500px;
+    width: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .article-image:hover {
-    transform: scale(1.02); /* Slightly enlarge on hover */
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Enhance shadow on hover */
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* --- Tech Stack Table --- */
 .tech-stack-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 2rem;
     box-shadow: var(--card-shadow);
-    border-radius: 8px;
-    overflow: hidden; /* To make border-radius work on table */
+    border-radius: var(--radius-sm);
+    overflow: hidden;
 }
 
 .tech-stack-table caption {
@@ -834,7 +1051,7 @@ section h2 {
     font-weight: 700;
     color: var(--primary-text-color);
     margin-bottom: 1rem;
-    padding-left: 5px; /* Align with table content */
+    padding-left: 5px;
 }
 
 .tech-stack-table th,
@@ -855,34 +1072,41 @@ section h2 {
 }
 
 .tech-stack-table tbody tr:nth-child(even) {
-    background-color: #fdfdfd; /* A very light gray for alternating rows */
+    background-color: #fdfdfd;
 }
 
 .tech-stack-table tbody tr:hover {
-    background-color: #f1f3f5; /* A light hover effect */
+    background-color: #f1f3f5;
 }
 
-/* --- Media Queries for Responsive Design --- */
-
+/* =========================================================
+   4. RESPONSIVE
+========================================================= */
 @media (max-width: 1100px) {
     .project-container,
     .portfolio-grid {
         width: 100%;
-        padding: 0 20px;
     }
 }
 
-
 @media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
     nav ul {
-        display: none; /* Hide navigation links */
+        display: none;
         flex-direction: column;
         position: absolute;
         top: 65px;
         left: 0;
         width: 100%;
         background-color: white;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul.active {
+        display: flex;
     }
 
     nav li {
@@ -896,24 +1120,61 @@ section h2 {
         display: block;
     }
 
+    nav a::after {
+        display: none;
+    }
+
+    section {
+        padding: 56px 16px;
+    }
+
     #home h1 {
         font-size: 2.5rem;
     }
 
-    .project-container,
+    .hero-intro {
+        font-size: 1.05rem;
+    }
+
+    .hero-buttons,
+    .hero-keywords {
+        justify-content: center;
+    }
+
+    .strengths-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
     .skills-container,
+    .project-container {
+        grid-template-columns: 1fr;
+    }
+
     .study-grid {
         flex-direction: column;
         width: 100%;
     }
 
     .project-card,
-    .skill-category {
+    .skill-category,
+    .strength-card,
+    .study-item-link {
         width: 100%;
         max-width: none;
     }
 
-    .portfolio-grid {
+    .project-detail-container,
+    .content-card,
+    .portfolio-item {
+        padding: 28px 20px;
+    }
+
+    .content-container > h1 {
+        font-size: 2rem;
+    }
+
+    .small-slide-img {
         width: 100%;
     }
 }
@@ -931,21 +1192,26 @@ section h2 {
         font-size: 1.8rem;
     }
 
-    .project-card h3 {
-        font-size: 1.3rem;
+    .project-card h3,
+    .portfolio-item h2,
+    .project-detail-container h3,
+    .study-item-content h3 {
+        font-size: 1.25rem;
     }
-}
 
-.small-slide-img {
-  width: 70%;          /* 크기 줄이기 */
-  max-width: 500px;    /* 최대 크기 제한 */
-  display: block;
-  margin: 0 auto;
-  cursor: zoom-in;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-}
+    .project-detail-container h1 {
+        font-size: 2rem;
+    }
 
-.small-slide-img:hover {
-  transform: scale(1.03);
+    .project-detail-container h2 {
+        font-size: 1.6rem;
+    }
+
+    .hero-btn,
+    .project-card a,
+    .cta-button,
+    button[id^="toggleTechnicalSkills"] {
+        width: 100%;
+        text-align: center;
+    }
 }
