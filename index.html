@@ -1,102 +1,209 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Borim's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="hamburger-menu">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Portfolio</a></li>
-                <li><a href="study.html">Study</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+  <nav>
+    <button class="hamburger-menu" aria-label="메뉴 열기">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </button>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./index.html#about">About Me</a></li>
+      <li><a href="./index.html#strengths">Strenghts</a></li>
+      <li><a href="./portfolio.html">Portfolio</a></li>
+      <li><a href="./study.html">Study</a></li>
+      <li><a href="./index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
     <main>
+        <!-- Hero -->
         <section id="home">
-            <div class="section-inner">
-                <h1>안녕하세요, 이보림입니다.</h1>
-                <p class="hero-intro">모델보다 문제 정의가 먼저라는 원칙을 잊지 않습니다.<br><strong>"이걸 안 했을 때 어떤 결과가 나타날지 늘 고민합니다."</strong></p>
+            <div class="section-inner hero-content">
+                <p class="hero-label">Data Analyst Portfolio</p>
+                <h1>분석 결과를 실행 전략으로 연결하는 데이터 분석가, 이보림입니다.</h1>
+                <p class="hero-intro">
+                    문제를 먼저 정의하고, 데이터를 통해 비즈니스 인사이트를 도출하며,
+                    실행 가능한 전략으로 연결하는 분석을 지향합니다.
+                </p>
+
+                <div class="hero-keywords">
+                    <span>문제 정의</span>
+                    <span>비즈니스 인사이트</span>
+                    <span>전략 설계</span>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="hero-btn primary">프로젝트 보기</a>
+                    <a href="#about" class="hero-btn secondary">소개 보기</a>
+                </div>
             </div>
         </section>
 
+        <!-- About -->
         <section id="about">
             <div class="section-inner">
                 <h2>About Me</h2>
-                <div class="about-content" style="text-align: left;">
+                <div class="about-content about-left">
                     <div class="about-keywords">
-                        <h3><strong>1등 분석가가 아닌, 판을 바꾸는 인사이트 메이커</strong></h3>
+                        <h3><strong>기본기를 바탕으로, 비즈니스에 닿는 분석을 만듭니다.</strong></h3>
                     </div>
+
                     <div class="about-summary">
-                        <p>정형화된 분석을 넘어, 비즈니스에 임팩트를 더하는 게임체인저가 되고자 합니다. 데이터 분석을 넘어 비즈니스 인사이트까지 마케터, 기획자와의 협업을 통해 문제 정의부터 실질적인 개선 제안까지, 데이터를 통해 사람들의 더 나은 선택을 이끌어 나가겠습니다.</p>
-                    </div>
-                    <hr style="margin: 30px 0; border: 1px solid #eee;">
-                    <div class="skills-container">
-                        <div class="skill-category">
-                            <div class="skill-underline"></div>
-                            <h4>Core Skills</h4>
-                            <p>Python, SQL, Tableau</p>
-                        </div>
-                        <div class="skill-category">
-                            <div class="skill-underline"></div>
-                            <h4>Analysis & ML</h4>
-                            <p>XGBoost, RandomForest, Time Series Analysis, Feature Engineering, SHAP</p>
-                        </div>
-                        <div class="skill-category">
-                            <div class="skill-underline"></div>
-                            <h4>Development & AI</h4>
-                            <p>VS Code, HTML/CSS, Generative AI, Prompt Engineering</p>
-                        </div>
+                        <p>
+                            저는 문제를 정의하는 단계부터 시작해, 데이터를 통해 비즈니스 인사이트를 도출하고
+                            실행 전략까지 연결하는 데이터 분석가를 지향합니다.
+                        </p>
+                        <p>
+                            단순히 수치를 정리하는 데서 끝나지 않고, 고객·매출·리텐션·상품 구조를 함께 보며
+                            더 나은 의사결정이 가능하도록 분석의 흐름을 설계합니다.
+                        </p>
+                        <p>
+                            커머스 환경에서 중요한 고객 행동과 성과 지표를 이해하고,
+                            Python·SQL·Tableau 기반의 기본기를 바탕으로 실질적인 개선 방향을 제안하고자 합니다.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Strengths -->
+        <section id="strengths">
+            <div class="section-inner">
+                <h2>Strengths</h2>
+                <p class="section-description">
+                    데이터를 해석하는 데서 멈추지 않고, 문제 정의부터 실행 전략까지 연결하는 분석을 지향합니다.
+                </p>
+
+                <div class="strengths-container">
+                    <div class="strength-card">
+                        <h3>문제 정의</h3>
+                        <p>
+                            단순한 분석 요청을 그대로 따르기보다,
+                            어떤 문제를 풀어야 하는지부터 구조화합니다.
+                        </p>
+                    </div>
+
+                    <div class="strength-card">
+                        <h3>비즈니스 인사이트</h3>
+                        <p>
+                            고객 행동, 매출 구조, 리텐션 흐름을 함께 보며
+                            현업에서 의미 있는 인사이트를 도출합니다.
+                        </p>
+                    </div>
+
+                    <div class="strength-card">
+                        <h3>전략 설계</h3>
+                        <p>
+                            분석 결과를 보고서에만 남기지 않고,
+                            실험·정책·운영 전략으로 이어질 수 있도록 설계합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <div class="section-inner">
+                <h2>Skills</h2>
+                <p class="section-description">
+                    프로젝트 전반에서 반복적으로 활용한 역량을 중심으로 정리했습니다.
+                </p>
+
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <div class="skill-underline"></div>
+                        <h4>Data Analysis Fundamentals</h4>
+                        <p>Python, SQL, Pandas, Tableau</p>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-underline"></div>
+                        <h4>Business Analysis</h4>
+                        <p>EDA, Cohort Analysis, RFM Segmentation, ROAS Analysis, KPI / Profit Analysis</p>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-underline"></div>
+                        <h4>Strategy & Experimentation</h4>
+                        <p>A/B Test Design, Threshold Optimization, Customer Segmentation, Simulation, Policy Design</p>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-underline"></div>
+                        <h4>Modeling & Data Applications</h4>
+                        <p>Random Forest, XGBoost, Feature Engineering, Text Analysis, API Data Integration</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
         <section id="projects">
             <div class="section-inner">
-                <h2>Portfolio</h2>
-            <div class="project-container">
-                <div class="project-card">
-                    <h3>Project 1</h3>
-                    <p>독일 은행 신용 리스크 예측 모델 구축</p>
-                    <a href="portfolio.html#credit">더 알아보기</a>
-                </div>
-                <div class="project-card">
-                    <h3>Project 2</h3>
-                    <p>Instacart 고객 재구매율 증대를 위한 맞춤형 마케팅 전략 수립</p>
-                    <a href="portfolio.html#instacart">더 알아보기</a>
-                </div>
-                <div class="project-card">
-                    <h3>Project 3</h3>
-                    <p>원석 액세서리 쇼핑몰 '선택과 집중' 성장 전략</p>
-                    <a href="portfolio.html#jewelry">더 알아보기</a>
-                </div>
-                <div class="project-card">
-                    <h3>Project 4</h3>
-                    <p>“대전 단골 주유소, 정말 항상 이득일까?” — 주유 의사결정 시뮬레이션</p>
-                    <a href="portfolio.html#gas_station">더 알아보기</a>
+                <h2>Featured Projects</h2>
+                <p class="section-description">
+                    문제 정의부터 실행 전략까지 연결한 주요 프로젝트를 소개합니다.
+                </p>
+
+                <div class="project-container">
+                    <div class="project-card">
+                        <h3>쇼핑몰 성장 전략</h3>
+                        <p>
+                            광고 효율, 리텐션, 구매 구조를 통합 분석해
+                            ‘선택과 집중’ 성장 전략을 설계한 프로젝트
+                        </p>
+                        <a href="portfolio.html#recommenz_growth">더 알아보기</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>주유 의사결정 시뮬레이션</h3>
+                        <p>
+                            가격이 아닌 실질 총비용 기준으로
+                            더 나은 선택을 설계한 데이터 기반 시뮬레이션 프로젝트
+                        </p>
+                        <a href="portfolio.html#gas_station">더 알아보기</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Instacart 리텐션 전략</h3>
+                        <p>
+                            RFM 세분화와 장바구니 행동 분석을 통해
+                            재구매 전략을 제안한 커머스 분석 프로젝트
+                        </p>
+                        <a href="portfolio.html#instacart_project">더 알아보기</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>신용 승인 정책 고도화</h3>
+                        <p>
+                            정확도보다 손익과 승인율을 중심으로
+                            운영 가능한 승인 기준을 설계한 프로젝트
+                        </p>
+                        <a href="portfolio.html#credit">더 알아보기</a>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- Contact -->
         <section id="contact">
             <div class="section-inner">
                 <h2>Contact</h2>
-                <p>
-                    📧 e-mail : borim0810@gmail.com <br>
-                    📱 Phone number : 010 - 8957 - 0238
+                <p class="contact-note">
+                    연락처는 공개 범위를 고려해 현재는 비공개로 두었습니다.<br />
+                    필요 시 이메일 및 LinkedIn 정보를 업데이트할 예정입니다.
                 </p>
             </div>
         </section>
