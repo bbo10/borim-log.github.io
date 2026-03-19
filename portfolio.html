@@ -3,137 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borim's Portfolio</title>
+    <title>Portfolio | Borim</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="hamburger-menu">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About Me</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="study.html">Study</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+  <nav>
+    <button class="hamburger-menu" aria-label="메뉴 열기">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </button>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./index.html#about">About Me</a></li>
+      <li><a href="./index.html#strengths">Strenghts</a></li>
+      <li><a href="./portfolio.html">Portfolio</a></li>
+      <li><a href="./study.html">Study</a></li>
+      <li><a href="./index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
     <main>
         <div class="content-container">
             <h1>Portfolio</h1>
+
             <div class="portfolio-grid">
+
                 <!-- 프로젝트 1 -->
-                <a href="project-a.html" class="portfolio-item-link">
-                    <div class="portfolio-item">
-                        <h2>Project 1: 독일 은행 신용 리스크 예측 모델 구축</h2>
-                        <p>채무불이행 예측부터 3단계 심사 전략까지, 데이터 기반의 리스크 관리 체계 구축</p>
-                        <p><strong>핵심성과:</strong></p>
-                        <ul>
-                            <li><strong>리크스 예측 정확도</strong> 57.9% → 65.6% <strong>(약 8%p 향상)</strong></li>
-                            <li><strong>손실 최소화를 위한</strong>  XGBoost 모델(F1-Score: 0.40) 최종 채택</li>
-                            <li>모델 예측 기반, <strong>실행 가능한 3단계 심사 가이드라인</strong> 설계</li>
-                        </ul>
-                            <p><strong>사용 기술:</strong></p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Pandas & Numpy</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                            <span class="tech-tag">Matplotlib & Seaborn</span>
-                        </div>
-                        <div class="read-more-link">
-                            <a href="project-a.html">자세히 보기 →</a>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- 프로젝트 2 -->
-                <a href="project-b.html" class="portfolio-item-link" id="instacart">
-                    <div class="portfolio-item">
-                        <h2>Project 2: Instacart 고객 재구매율 증대를 위한 맞춤형 마케팅 전략 수립</h2>
-                        <p>RFM 분석으로 핵심 고객을 발굴하고, 데이터 기반의 맞춤형 전략으로 재구매율 상승 유도</p>
-                        <p><strong>핵심성과:</strong></p>
-                        <ul>
-                            <li>RFM 분석으로<strong>'관심 필요 고객(54.1%)'</strong>을 핵심 성장 동력으로 발견</li>
-                            <li>구매 패턴을 활용한 <strong>'신선식품 정기배송 구독'</strong> 모델 제안</li>
-                            <li>그룹별 <strong>차별화된 마케팅 액션 플랜</strong>으로 리소스 효율화 방안 제시</li>
-                        </ul>
-                        <p><strong>사용 기술:</strong></p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">RFM Analysis</span>
-                            <span class="tech-tag">Matplotlib</span>
-                        </div>
-                        <div class="read-more-link">
-                            <a href="project-b.html">자세히 보기 →</a>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- 프로젝트 3 -->
-                <a href="project-c.html" class="portfolio-item-link" id="jewelry">
-                    <div class="portfolio-item">
-                        <h2>Project 3: 원석 액세서리 쇼핑몰 '선택과 집중' 성장 전략</h2>
-                        <p>매출 하락의 근본 원인을 진단하고, 데이터 기반으로 '될 놈'을 발굴하여 성장 모멘텀 회복</p>
-                        <p><strong>핵심 성과:</strong></p>
-                        <ul>
-                            <li>데이터 시뮬레이션으로 <strong>총매출 16% 상승</strong> 가능한 성장 기회 발굴</li>
-                            <li>단계적 필터링으로 잠재력 높은 <strong>新 스테디셀러 4종</strong> 선별</li>
-                            <li>LLM(Gemini) API 기반 리뷰 분석으로 <strong>'내구성, 사이즈' 등 핵심 개선점</strong> 도출</li>
-                        </ul>
-                        <p><strong>사용 기술:</strong></p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Tableau</span>
-                            <span class="tech-tag">Cohort Analysis</span>
-                            <span class="tech-tag">LLM API (Gemini)</span>
-                        </div>
-                        <div class="read-more-link">
-                            <a href="project-c.html">자세히 보기 →</a>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- 프로젝트 4 -->
-                <a href="project-d.html" class="portfolio-item-link" id="gas_station">
-                <div class="portfolio-item">
-                    <h2>Project 4: “대전 단골 주유소, 정말 항상 이득일까?” — 주유 의사결정 시뮬레이션</h2>
+                <div class="portfolio-item" id="recommenz_growth">
+                    <h2>“광고! 무조건 매출과 연결되는가?” — 원석 액세서리 쇼핑몰 ‘선택과 집중’ 성장 전략</h2>
 
                     <p>
-                    운전 중 주유가 필요할 때, <strong>‘리터당 최저가’</strong>만 보고 움직이는 선택이 정말 이득인지 빠르게 판단하기 위해
-                    <strong>주유비 + 이동비 − 혜택</strong>을 통합한 실질 총비용(Net Total Cost) 기반 시뮬레이터를 구축했습니다.
+                        광고비를 늘려도 매출이 정체되는 문제를 해결하기 위해,
+                        <strong>광고 효율·리텐션·구매 구조·상품 포트폴리오</strong>를 통합 분석했습니다.
+                        단순 진단에 그치지 않고, <strong>‘될 고객·될 상품’에 집중하는 성장 전략</strong>을 설계해
+                        실질적인 매출 개선 방향으로 연결했습니다.
                     </p>
 
                     <p><strong>핵심성과:</strong></p>
                     <ul>
-                    <li>52주 시뮬레이션 <strong>100회 반복 평균</strong> 기준, 실질 최적화 전략이 <strong>근거리 대비 121,230원(2.74%)</strong> 절감</li>
-                    <li><strong>최저가 전략</strong>은 이동비 미반영으로 오히려 비용 증가 가능 → 실질 최적화가 <strong>최저가 대비 249,146원(5.47%)</strong> 절감</li>
-                    <li><strong>손익분기점 가드레일</strong> 설계: 1km 추가 이동 시 <strong>최소 4.5원/L</strong> 이상 할인 필요(추천 안정성 확보)</li>
+                        <li>광고 유입 구매와 매출 흐름 비교를 통해 <strong>광고 의존 성장의 한계</strong>와 전략 재설계 필요성 도출</li>
+                        <li>재구매 분석으로 <strong>첫 구매 후 3개월이 리텐션 골든타임</strong>임을 확인해 고객 관리 핵심 구간 정의</li>
+                        <li><strong>비회원 69%</strong> 구매 구조와 스테디셀러 후보군을 기반으로 <strong>선택과 집중 실행 전략</strong> 제안</li>
                     </ul>
 
                     <p><strong>사용 기술:</strong></p>
                     <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Kakao Local API</span>
-                    <span class="tech-tag">OpiNet API</span>
-                    <span class="tech-tag">pyproj</span>
-                    <span class="tech-tag">Feature Engineering</span>
-                    <span class="tech-tag">Simulation</span>
-                    <span class="tech-tag">Random Forest</span>
-                    <span class="tech-tag">Folium</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">ROAS Analysis</span>
+                        <span class="tech-tag">Cohort Analysis</span>
+                        <span class="tech-tag">Customer Segmentation</span>
+                        <span class="tech-tag">Step-wise Filtering</span>
+                        <span class="tech-tag">Text Preprocessing</span>
+                        <span class="tech-tag">Simulation</span>
                     </div>
 
                     <div class="read-more-link">
-                    <a href="project-d.html">자세히 보기 →</a>
+                        <a href="project-c.html">자세히 보기 →</a>
                     </div>
                 </div>
-                </a>
+
+                <!-- 프로젝트 2 -->
+                <div class="portfolio-item" id="gas_station">
+                    <h2>“대전 단골 주유소, 정말 항상 이득일까?” — 주유 의사결정 시뮬레이션</h2>
+
+                    <p>
+                        운전 중 주유가 필요할 때, <strong>리터당 최저가</strong>만으로는 설명되지 않는 실제 비용 문제를 해결하고자 했습니다.
+                        <strong>주유비 + 이동비 − 혜택</strong>을 반영한 <strong>실질 총비용(Net Total Cost)</strong> 기준 시뮬레이터를 구축해,
+                        더 합리적인 주유 의사결정 기준을 제시했습니다.
+                    </p>
+
+                    <p><strong>핵심성과:</strong></p>
+                    <ul>
+                        <li>52주 시뮬레이션 <strong>100회 반복 평균</strong> 기준, 실질 최적화 전략이 <strong>근거리 대비 121,230원(2.74%)</strong> 절감</li>
+                        <li>이동비를 반영한 실질 최적화가 <strong>최저가 전략 대비 249,146원(5.47%)</strong> 절감</li>
+                        <li><strong>손익분기점 가드레일</strong> 설계: 1km 추가 이동 시 <strong>최소 4.5원/L</strong> 이상 할인 필요 기준 도출</li>
+                    </ul>
+
+                    <p><strong>사용 기술:</strong></p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Kakao Local API</span>
+                        <span class="tech-tag">OpiNet API</span>
+                        <span class="tech-tag">pyproj</span>
+                        <span class="tech-tag">Feature Engineering</span>
+                        <span class="tech-tag">Simulation</span>
+                        <span class="tech-tag">Random Forest</span>
+                        <span class="tech-tag">Folium</span>
+                    </div>
+
+                    <div class="read-more-link">
+                        <a href="project-d.html">자세히 보기 →</a>
+                    </div>
+                </div>
+
+                <!-- 프로젝트 3 -->
+                <div class="portfolio-item" id="instacart_project">
+                    <h2>“VIP보다 중요한 54%의 고객” — Instacart 재구매(리텐션) 전략 분석</h2>
+
+                    <p>
+                        Instacart 주문 데이터를 기반으로 <strong>재구매율을 높이기 위한 핵심 고객과 행동 패턴</strong>을 도출했습니다.
+                        <strong>RFM 기반 고객 세분화</strong>와 <strong>카테고리·장바구니 행동 분석</strong>을 통해,
+                        리텐션 개선을 위한 <strong>CRM 실행 전략(구독·번들·추천)</strong>으로 연결했습니다.
+                    </p>
+
+                    <p><strong>핵심성과:</strong></p>
+                    <ul>
+                        <li>전체 고객의 <strong>54.1%</strong>가 ‘관심 필요 고객’으로 확인되어 리텐션 개선의 핵심 타겟 정의</li>
+                        <li><strong>신선식품(Fresh Foods)</strong> 카테고리 재구매율 <strong>65.4%</strong>로 반복 구매 핵심 영역 도출</li>
+                        <li>연관규칙 분석을 통해 <strong>bread–cheese, milk–yogurt</strong> 번들 패턴 발견 및 추천 전략 제안</li>
+                    </ul>
+
+                    <p><strong>사용 기술:</strong></p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">EDA</span>
+                        <span class="tech-tag">RFM Segmentation</span>
+                        <span class="tech-tag">Association Rules</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">CRM Strategy</span>
+                    </div>
+
+                    <div class="read-more-link">
+                        <a href="project-b.html">자세히 보기 →</a>
+                    </div>
+                </div>
+
+                <!-- 프로젝트 4 -->
+                <div class="portfolio-item" id="credit">
+                    <h2>“정확도보다 중요한 건 손익이었다” — 신용 승인 정책 고도화</h2>
+
+                    <p>
+                        단순한 리스크 예측 모델 구축을 넘어, <strong>손익과 승인율을 함께 고려한 운영 가능한 신용 승인 정책</strong>을 설계했습니다.
+                        <strong>Expected Profit(손익) + 승인율 가드레일</strong> 기준으로 임계값을 최적화해,
+                        실제 현업에서 활용 가능한 의사결정 기준으로 연결했습니다.
+                    </p>
+
+                    <p><strong>핵심성과:</strong></p>
+                    <ul>
+                        <li>기존 룰 기반 정책 대비 <strong>Bad Approval Rate 37.5% → 18.8%</strong>로 절반 수준 감소</li>
+                        <li>손익 기반 정책 설계로 <strong>Expected Profit -119 → +8</strong>로 개선</li>
+                        <li><strong>승인율 가드레일(≥60%)</strong> 조건에서 최적 Threshold(<strong>0.35</strong>) 도출</li>
+                    </ul>
+
+                    <p><strong>사용 기술:</strong></p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Random Forest</span>
+                        <span class="tech-tag">XGBoost</span>
+                        <span class="tech-tag">Feature Engineering</span>
+                        <span class="tech-tag">Threshold Optimization</span>
+                        <span class="tech-tag">A/B Test Design</span>
+                    </div>
+
+                    <div class="read-more-link">
+                        <a href="project-a.html">자세히 보기 →</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
