@@ -1,328 +1,351 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1 - 독일 은행 신용 리스크 예측 모델 구축</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project - 신용 승인 정책 고도화: 리스크 예측 모델 & 실험 설계</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About Me</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="study.html">Study</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+  <nav>
+    <button class="hamburger-menu" aria-label="메뉴 열기">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </button>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./index.html#about">About Me</a></li>
+      <li><a href="./index.html#strengths">Strenghts</a></li>
+      <li><a href="./portfolio.html">Portfolio</a></li>
+      <li><a href="./study.html">Study</a></li>
+      <li><a href="./index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <main>
-        <div class="content-container">
-            <div class="project-detail-container">
-                <h1>Project 1: 독일 은행 신용 리스크 예측 모델 구축</h1>
-        <div style="text-align: right;">
-            <p>프로젝트 기간: 2025.01.16 ~ 2025.01.24</p>
+<main>
+  <div class="content-container">
+    <div class="project-detail-container">
+
+      <!-- =======================
+           0) HERO / SUMMARY
+      ======================== -->
+      <h1>“정확도보다 중요한 건 손익이었다”<br/><small>신용 승인 정책 고도화: 리스크 예측 모델 & 실험 설계</small></h1>
+
+      <div class="project-period">
+        <p>프로젝트 기간: 2025.01.16 ~ 2026.01.24</p>
+      </div>
+
+      <p style="text-align:center;">
+        <strong>
+          신용 승인에서는 <span style="color:#007BFF;">Bad(부실) 1건 승인</span>이 여러 건의 Good 수익을 상쇄할 수 있습니다. <br/>
+          그래서 이 프로젝트는 단순 분류 성능이 아니라 <span style="color:#007BFF;">손익(Expected Profit) + 운영 제약(승인율 가드레일)</span> 기준으로
+          “런칭 가능한 컷오프(Threshold)”를 설계하는 데 집중했습니다.
+        </strong>
+      </p>
+
+      <p class="sub-text" style="text-align:center;">
+        핵심 메시지: 모델은 “정답 맞추기”가 아니라, <strong>운영 가능한 승인/거절 기준을 설계하는 확률 추정기</strong>로 사용했습니다.
+      </p>
+
+      <!-- Hero Slideshow (2장) -->
+      <div class="slideshow-container" style="max-width: 800px; position: relative; margin: 20px auto;">
+        <div class="mySlides slides-1 fade">
+          <img src="assets/project-a-images/step4_expected_profit_vs_threshold.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="Expected Profit vs Threshold">
+        </div>
+        <div class="mySlides slides-1 fade">
+          <img src="assets/project-a-images/step5_badrecall_approval_vs_threshold.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="Bad Recall & Approval Rate vs Threshold">
         </div>
 
-                <h2>1. 문제 정의: 기회와 위기</h2>
-                <p><strong>"은행은 대출을 통해 수익을 창출하지만, 모든 대출에는 회수하지 못할 '위험'이 따릅니다. 
-                    <br>이 위험을 얼마나 잘 관리하느냐가 은행의 건전성과 수익성을 좌우합니다."</strong>
-                    <br><span style="font-size: 0.85em; color: #545454">전통적인 신용 점수와 일부 재무 정보만으로는 복잡한 개인의 상환 능력과 의지를 완벽하게 예측하는 데 한계가 있습니다. 이는 두 가지 비즈니스 리스크로 이어집니다.</span></p>
-                <ul>
-                    <li><strong>기회 손실:</strong> 상환 능력이 충분한 <strong>'우량 고객'을 놓치는 문제</strong></li>
-                    <li><strong>재무 손실:</strong> 부실 가능성이 높은 <strong>'위험 고객'에게 잘못 대출해주는 문제</strong></li>
-                </ul>
-                <p><span class="sub-text">이 프로젝트는 고객의 인구통계, 금융 거래, 대출 목적 등 다양한 데이터 속에 숨겨진 <strong>'부실 위험 패턴'</strong>을 찾아내는 것을 목표로 시작되었습니다.</span></p>
-                <p><strong>핵심질문:</strong></p>
-                <ul>
-                    <li>어떻게 하면 숨겨진 패턴을 찾아 부실 위험 고객(Bad)을 효과적으로 식별할 수 있을까?</li>
-                    <li>클래스 불균형(Good: 70%, Bad: 30%) 문제를 어떻게 극복하고, 비즈니스적으로 의미 있는 모델을 만들 수 있을까?</li>
-                </ul>
-                <div class="carousel" id="carousel1">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="assets/project-a-images/1.png" alt="분석 이미지 1" onclick="openModal(this)">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="assets/project-a-images/2.png" alt="분석 이미지 2" onclick="openModal(this)">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="assets/project-a-images/3.png" alt="분석 이미지 3" onclick="openModal(this)">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="assets/project-a-images/4.png" alt="분석 이미지 4" onclick="openModal(this)">
-                        </div>
-                    </div>
-                    <button class="carousel-control prev" onclick="moveSlide1(-1)">&#10094;</button>
-                    <button class="carousel-control next" onclick="moveSlide1(1)">&#10095;</button>
-                </div>
+        <a class="prev" onclick="plusSlides(-1, 'slides-1')">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 'slides-1')">&#10095;</a>
+      </div>
 
-                <script>
-                    (function() {
-                        let slideIndex = 0;
-                        const carousel = document.querySelector('#carousel1');
-                        const slides = carousel.querySelectorAll('.carousel-item');
-                        
-                        function showSlides() {
-                            slides.forEach((slide, index) => {
-                                slide.style.display = "none";
-                            });
-                            if (slides.length > 0) {
-                                slides[slideIndex].style.display = "block";
-                            }
-                        }
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
 
-                        window.moveSlide1 = function(n) {
-                            slideIndex += n;
-                            if (slideIndex >= slides.length) {slideIndex = 0}
-                            if (slideIndex < 0) {slideIndex = slides.length - 1}
-                            showSlides();
-                        }
+      <!-- =======================
+           1) 문제 정의
+      ======================== -->
+      <h2>1. 문제 정의: “정확도”만으로는 정책을 결정할 수 없다</h2>
 
-                        showSlides();
-                    })();
-                </script>
+      <p>
+        승인 정책은 단순히 맞춘다/틀린다가 아니라, <strong>승인했을 때의 손익</strong>과 <strong>운영 제약</strong>으로 결정됩니다.
+        특히 <strong>Bad 승인</strong>은 손실이 크기 때문에, Accuracy가 높아도 실제 비즈니스 성과가 악화될 수 있습니다.
+      </p>
 
-                <h2>2. 분석 과정 및 역할</h2>
-                <p><span class="sub-text">저는 데이터에서 비즈니스 가치를 창출하기 위해 가설 수립부터 EDA, 정교한 전처리, 반복적인 모델링, 그리고 최종 전략 수립까지 체계적인 분석 파이프라인을 구축했습니다.</span></p>
-                <h3>Step 1. 가설 기반의 탐색적 데이터 분석 (EDA)</h3>
-                <p><span class="sub-text">모델링에 앞서 데이터의 본질적인 특성을 파악하고 유의미한 패턴을 발견하기 위해 6가지 핵심 가설을 수립하고 검증했습니다.</span></p>
-                    <li><strong>가설수립:</strong></li>
-                        <ol>
-                            <li>나이: 경제활동이 활발한 30-50세의 신용등급이 높을 것이다.</li>
-                            <li>직업 안정성: 숙련직/전문직일수록 신용등급이 높을 것이다.</li>
-                            <li>저축 수준: 저축/당좌예금 잔고가 많을수록 신용등급이 높을 것이다.</li>
-                            <li>주택 유형: 자가 소유자의 신용등급이 높을 것이다.</li>
-                            <li>상환 부담: 대출금액 대비 상환기간이 짧을수록(월 상환 부담이 낮을수록) 신용등급이 높을 것이다.</li>
-                            <li>대출 목적: 자동차, 주택 등 유형자산 구매 목적의 대출이 신용등급이 높을 것이다.</li>
-                        </ol>
-                    <li><strong>시각적 검증:</strong> 각 가설을 검증하기 위해 Bar Chart, Stacked Bar Chart 등 다양한 시각화 기법을 활용하여 변수와 신용 리스크(Risk) 간의 관계를 직관적으로 파악했습니다. 분석 결과, 주택 유형, 저축 수준, 대출 목적 등은 가설과 일치하는 경향을 보였으나, 나이, 직업 등은 예상과 다른 패턴을 보여 모델링 시 가중치 부여에 대한 중요한 인사이트를 얻었습니다.</li>
-                </ul>
-                <div class="carousel" id="carousel2">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="assets/project-a-images/5.png" alt="시각적 검증 이미지 1" onclick="openModal(this)">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="assets/project-a-images/6.png" alt="시각적 검증 이미지 2" onclick="openModal(this)">
-                        </div>
-                    </div>
-                    <button class="carousel-control prev" onclick="moveSlide2(-1)">&#10094;</button>
-                    <button class="carousel-control next" onclick="moveSlide2(1)">&#10095;</button>
-                </div>
+      <ul>
+        <li><strong>핵심 KPI</strong>: Expected Profit</li>
+        <li><strong>운영 제약</strong>: 승인율 가드레일(예: 승인율 ≥ 60%)</li>
+        <li><strong>정책 품질 지표</strong>: Bad Approval Rate, Bad Recall</li>
+      </ul>
 
-                <script>
-                    (function() {
-                        let slideIndex = 0;
-                        const carousel = document.querySelector('#carousel2');
-                        const slides = carousel.querySelectorAll('.carousel-item');
-                        
-                        function showSlides() {
-                            slides.forEach((slide, index) => {
-                                slide.style.display = "none";
-                            });
-                            if (slides.length > 0) {
-                                slides[slideIndex].style.display = "block";
-                            }
-                        }
+      <!-- =======================
+           2) 데이터 이해 & EDA
+      ======================== -->
+      <h2>2. 데이터 이해: 클래스 불균형 & 리스크 패턴</h2>
 
-                        window.moveSlide2 = function(n) {
-                            slideIndex += n;
-                            if (slideIndex >= slides.length) {slideIndex = 0}
-                            if (slideIndex < 0) {slideIndex = slides.length - 1}
-                            showSlides();
-                        }
+      <p>
+        German Credit(1,000건) 데이터에서 bad 비율은 약 30%였습니다.
+        또한 일부 변수에 결측이 집중되어 있어 전처리 전략이 정책 품질에 큰 영향을 주었습니다.
+      </p>
 
-                        showSlides();
-                    })();
-                </script>
-
-                <h3>Step 2. 모델 성능을 극대화하는 데이터 전처리 및 피처 엔지니어링</h3>
-                <p><span class="sub-text">데이터의 품질은 모델의 성능과 직결됩니다. 저는 데이터의 손실을 최소화하고 잠재력을 최대한 끌어내기 위해 다음과 같은 정교한 전처리 과정을 수행했습니다.</span></p>
-                <ul>
-                    <li><strong>핵심: 결측치 처리 전략 수립 및 실행</strong></li>
-                    <ul>
-                        <li><strong>문제 인식:</strong> 저축 계좌(Saving accounts)와 당좌 예금(Checking account) 변수는 고객의 신용도를 판단하는 핵심 정보임에도 불구하고 각각 18.3%, 39.4%의 높은 결측치 비율을 보였습니다.</li>
-                        <li><strong>의사결정 과정:</strong></li>
-                            <ol>
-                                <li><strong>단순 제거 (기각):</strong> 정보 손실이 너무 커서 모델 성능에 악영향을 줄 것이라 판단했습니다.</li>
-                                <li><strong>전체 최빈값 대체 (기각):</strong> 데이터 전체의 최빈값으로 일괄 대체할 경우, 각 고객의 개별 특성이 무시되어 데이터의 왜곡을 초래할 수 있다고 판단했습니다.</li>
-                                <li><strong>그룹 기반 최빈값 대체 (채택):</strong> 고객 행위가 유사할 것으로 예상되는 <strong>나이(Age), 직업(Job), 주거 형태(Housing)를 기준으로 데이터를 그룹화</strong>하고, 각 그룹 내의 최빈값으로 결측치를 대체하는 방식을 최종 선택했습니다. 이는 데이터의 통일성과 개별 특성을 모두 보존하는 가장 합리적인 방법이었습니다.</li>
-                            </ol>
-                        <li><strong>결정적 성과:</strong> 이 정교한 결측치 처리 기법을 적용한 결과, <strong>모델의 전체 정확도가 57.9%에서 65.6%로 약 8%p 극적으로 향상되는 결과</strong>를 직접 확인했습니다.</li>
-                    </ul>
-                    <img src="assets/project-a-images/7.png" alt="결정적 성과 이미지" style="width:100%; max-width:600px; display:block; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
-                    <li><strong>피처 엔지니어링 및 이상치 처리</strong></li>
-                        <ul>
-                           <li><strong>파생 변수 생성:</strong></li> 고객의 실질적인 상환 부담을 더 잘 반영하기 위해 Credit_ratio (대출금액 / 상환기간) 변수를, 연령 특성을 범주화하기 위해 Age_group 변수를 새롭게 생성했습니다.</li>
-                           <li><strong>이상치 보존:</strong> Box Plot 분석 결과 대출 금액(Credit amount)과 상환 기간(Duration)에서 이상치가 발견되었으나, 이는 실제 금융 거래에서 충분히 발생 가능한 값들이라 판단하여 <strong>데이터의 무결성을 위해 제거하지 않고 보존했습니다.</strong></li>
-                        </ul>
-                </ul>
-                <h3>Step 3. 반복적 모델링 및 성능 개선</h3>
-                <p><span class="sub-text">초기 모델의 한계를 극복하고 목표 정확도를 달성하기 위해, 단순한 규칙 기반 모델에서 시작하여 복잡한 머신러닝 모델로 점진적으로 발전시키는 반복적인 접근법을 취했습니다.</span></p>
-                <ol>
-                    <li><strong>규칙 기반 베이스라인 모델 구축:</strong> EDA와 가설 검증 결과를 바탕으로 calculate_score 함수를 직접 구현하여 간단한 규칙 기반의 신용 점수 모델을 만들었습니다. 이 모델은 66%의 정확도를 기록하여, 더 정교한 모델의 필요성을 확인하는 기준점이 되었습니다.</li>
-                    <li><strong>머신러닝 모델 도입 및 비교:</strong> 성능 개선을 위해 <strong>Random Forest, XGBoost, Logistic Regression, Gradient Boosting, SVM</strong> 등 5가지 주요 머신러닝 알고리즘을 도입하여 성능을 비교 분석했습니다.</li>
-                    <li><strong>'Score' 피처를 활용한 성능 향상:</strong> 제가 직접 만든 규칙 기반 Score를 새로운 특성(Feature)으로 추가하여 각 머신러닝 모델을 다시 훈련시키는 실험을 진행했습니다. 그 결과, <strong>XGBoost 모델에서 'Bad' 고객 예측 성능(F1-Score)이 0.29에서 0.40으로 크게 향상</strong>되는 유의미한 결과를 얻었습니다.</li>
-                    <div style="background-color: #F8F9FA; border-left: 5px solid #007BFF; padding: 10px 15px; margin: 20px 0; border-radius: 6px;">
-                    <strong>🎯 성과 요약:</strong><br>규칙 기반 Score 피처 추가 후, <span style="color:var(--secondary-text-color);"><strong>XGBoost의 F1-score가 0.29 → 0.40으로 약 38% 향상</strong></span>되었습니다.
-                    </div>
-                </ol>
-                <img src="assets/project-a-images/8.png" alt="Score 피처 활용 성능 향상 이미지" style="width:100%; max-width:600px; display:block; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
-
-                <h3>Step 4. 비즈니스 목표 기반 최종 모델 선정 및 전략 제안</h3>
-                <p><span class="sub-text">기술적인 성능 지표를 넘어, 실제 비즈니스 문제 해결에 가장 적합한 모델을 선택하는 것이 최종 목표였습니다.</span></p>
-                <ul>
-                    <li><strong>핵심 지표 재정의:</strong> 이 프로젝트의 궁극적인 목표는 'Good' 고객을 맞추는 것보다 '은행의 손실을 막기 위해 부실 위험이 높은 Bad 고객(Risk=0)을 정확히 찾아내는 것'이었습니다. 따라서 전체 정확도(Accuracy)가 아닌, <strong>'Bad' 클래스에 대한 F1-Score</strong>를 최종 모델 선택의 핵심 기준으로 삼았습니다.</li>
-                    <li><strong>최종 모델 선정:</strong> 모든 모델을 종합 비교한 결과, <strong>XGBoost 모델이 'Bad' 클래스 F1-Score에서 0.40으로 가장 우수한 성능</strong>을 보여, 비즈니스 목표에 가장 부합하는 최적의 모델로 최종 선정했습니다.</li>
-                    <li><strong>실행 가능한 대출 가이드라인 제안:</strong> 모델 예측 결과를 바탕으로, 신규 고객에 대한 '대출 승인/조건부 승인/거절'로 이어지는 구체적인 심사 가이드라인을 설계했습니다. 특히, 조건부 승인 단계에서는 담보 요구(LTV 80% 이상), 보증인 요구(신용 4등급 이상) 등 구체적인 조건을 제시하여 리스크 관리와 잠재 고객 확보의 균형을 맞추는 방안을 제안했습니다.</li>
-                </ul>
-                <img src="assets/project-a-images/9.png" alt="대출 가이드라인 이미지" style="width:100%; max-width:600px; display:block; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
-
-                <h2>3. 활용 기술(Technical Skills)</h2>
-                <p><span class="sub-text">이 프로젝트는 Python 기반의 데이터 분석 생태계를 적극적으로 활용하여 데이터 처리부터 모델링, 시각화, 그리고 최종 전략 제안까지의 전 과정을 수행했습니다.</span></p>
-                <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Pandas & Numpy</span>
-                    <span class="tech-tag">Scikit-learn</span>
-                    <span class="tech-tag">Matplotlib & Seaborn</span>
-                </div>
-                <button id="toggleTechnicalSkills" class="cta-button" style="margin-top: 20px; margin-bottom: 20px;">자세히 보기</button>
-                <div id="technical-skills-details" style="display: none;">
-                    <h3>핵심 언어 및 라이브러리(Core Language & Libraries)</h3>
-                    <ul>
-                        <li><strong>Python</strong></li>
-                        <ul>
-                            <li>데이터 분석의 전 과정에서 사용된 핵심 프로그래밍 언어입니다. 간결한 문법과 강력한 데이터 처리 라이브러리 생태계를 바탕으로 효율적인 분석 파이프라인을 구축했습니다.</li>
-                        </ul>
-                        <li><strong>Pandas & NumPy</strong></li>
-                        <ul>
-                            <li><strong>역할:</strong>데이터 정제, 변환, 그리고 기술 통계 분석의 근간이 되었습니다.</li>
-                            <li><strong>주요 활용:</strong></li>
-                            <ul>
-                                <li>CSV 파일 로드 및 데이터프레임 생성</li>
-                                <li>isnull().sum()을 활용한 결측치 식별 및 groupby()를 활용한 그룹 기반 결측치 대체</li>
-                                <li>.apply() 함수를 이용한 calculate_score 규칙 기반 피처 생성</li>
-                                <li>pd.qcut을 활용한 연속형 데이터의 범주화 (신용등급 부여)</li>
-                                <li>NumPy를 이용한 복잡한 수치 연산 및 배열 처리</li>
-                            </ul>
-                        </ul>
-                        <li><strong>Scikit-learn</strong></li>
-                        <ul>
-                            <li><strong>역할: </strong>머신러닝 모델링 및 평가를 위한 핵심 프레임워크로 사용되었습니다.</li>
-                            <li><strong>주요활용:</strong></li>
-                            <ul>
-                                <li><strong>모델 구축: </strong>RandomForestClassifier, XGBoostClassifier, LogisticRegression, GradientBoostingClassifier, SVC(SVM) 등 5가지 분류 모델을 구현하고 학습시켰습니다.</li>
-                                <li><strong>데이터 전처리: </strong>tandardScaler를 사용하여 특성들의 스케일을 표준화했으며, 이는 특히 거리 기반 알고리즘(SVM)과 회귀 모델의 성능 안정화에 기여했습니다.</li>
-                                <li><strong>모델 평가: </strong>train_test_split으로 데이터를 분리하고, KFold 교차 검증을 통해 모델의 일반화 성능을 안정적으로 평가했습니다. confusion_matrix, classification_report를 통해 정확도(Accuracy), 정밀도(Precision), 재현율(Recall), F1-Score 등 다각적인 성능 지표를 산출했습니다.</li>
-                            </ul>
-                        </ul>
-                    </ul>
-                    <h3>데이터 시각화(Data Visualization)</h3>
-                    <ul>
-                        <li><strong>역할: </strong>데이터의 패턴과 인사이트를 시각적으로 탐색하고, 분석 결과를 효과적으로 전달하는 데 사용되었습니다.</li>
-                        <li><strong>주요 활용: </strong></li>
-                        <ul>
-                            <li><strong>EDA: </strong>Bar chart, Stacked bar chart를 사용하여 가설을 검증하고 변수 간의 관계를 탐색했습니다.</li>
-                            <li><strong>이상치 탐색: </strong>Box Plot을 그려 데이터 분포와 이상치를 시각적으로 확인했습니다.</li>
-                            <li><strong>상관관계 분석: </strong>Heatmap을 사용하여 변수 간의 상관관계를 한눈에 파악했습니다.</li>
-                            <li><strong>결과 시각화: </strong>Confusion Matrix 시각화, Feature Importance 그래프를 통해 모델의 성능과 주요 특성을 명확하게 전달했습니다.</li>
-                        </ul>
-                    </ul>
-                    <h3>분석 기법 및 방법론 (Analysis Techniques & Methodologies)</h3> 
-                    <ul>
-                        <li><strong>탐색적 데이터 분석 (EDA): </strong>모델링에 앞서 가설을 수립하고, 시각화를 통해 데이터의 특성과 변수 간의 관계를 깊이 있게 탐색했습니다.</li>
-                        <li><strong>피처 엔지니어링 (Feature Engineering): </strong>기존 변수를 조합하여 Credit_ratio, Age_group, Score 등 모델 성능 향상에 기여하는 새로운 파생 변수를 생성했습니다.</li>
-                        <li><strong>분류 모델링 (Classification Modeling): </strong>은행의 대출 승인 여부(Good/Bad)를 예측하는 이진 분류 문제를 해결하기 위해 다양한 머신러닝 알고리즘을 적용하고 비교했습니다.</li>
-                        <li><strong>교차 검증 (Cross-Validation): </strong>K-Fold 교차 검증을 사용하여 훈련 데이터에 대한 과적합(Overfitting)을 방지하고, 모델이 새로운 데이터에 대해서도 안정적인 성능을 보일 수 있도록 일반화 성능을 평가했습니다.</li>
-                        <li><strong>하이퍼파라미터 튜닝 (Hyperparameter Tuning): </strong>모델의 성능을 최적화하기 위해 Grid Search 등의 기법을 활용하여 max_depth, n_estimators와 같은 주요 하이퍼파라미터를 조정했습니다.</li>
-                        <li><strong>비즈니스 목표 기반 모델 평가: </strong>단순 정확도가 아닌, 비즈니스 문제(부실 고객 식별)의 특성을 반영한 F1-Score를 핵심 평가지표로 선정하여 가장 실용적인 모델을 선택하는 의사결정 과정을 거쳤습니다.</li>
-                    </ul> 
-                </div> 
-            </div>
+      <!-- EDA Slideshow (2장) -->
+      <div class="slideshow-container" style="max-width: 800px; position: relative; margin: 20px auto;">
+        <div class="mySlides slides-2 fade">
+          <img src="assets/project-a-images/step1_class_distribution.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="Class Distribution">
         </div>
-    </main>
+        <div class="mySlides slides-2 fade">
+          <img src="assets/project-a-images/step1_missing_rate.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="Class Distribution">
+        </div>
+        <div class="mySlides slides-2 fade">
+          <img src="assets/project-a-images/step1_bad_rate_by_purpose.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="Bad rate by Housing">
+        </div>
+        <div class="mySlides slides-2 fade">
+          <img src="assets/project-a-images/step1_bad_rate_by_housing.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="Bad rate by Housing">
+        </div>
+        <div class="mySlides slides-2 fade">
+          <img src="assets/project-a-images/step1_bad_rate_by_job.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="Bad rate by Housing">
+        </div>
+        <a class="prev" onclick="plusSlides(-1, 'slides-2')">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 'slides-2')">&#10095;</a>
+      </div>
 
+      <h3>핵심 관찰</h3>
+      <ul>
+        <li><strong>결측</strong>: Checking account(39.4%), Saving accounts(18.3%)에 결측이 집중</li>
+        <li><strong>Housing</strong>: own(자가)은 bad 비율이 낮고, free/rent는 bad 비율이 높음</li>
+        <li><strong>Age_group</strong>: Student(≤25)에서 bad 비중이 상대적으로 높게 관찰</li>
+        <li><strong>대출 규모/기간</strong>: bad가 더 큰 값 분포(금액/기간 리스크 확대 가능성)</li>
+      </ul>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
+      <p><strong>
+        결론적으로 “동일한 승인 정책을 모든 고객에 적용하면 안 된다”는 가설이 강화되었고,
+        세그먼트 기반 차등 승인 전략을 설계할 근거를 확보했습니다.
+      </strong></p>
+
+      <!-- =======================
+           3) 전처리 전략
+      ======================== -->
+      <h2>3. 전처리: dropna가 아닌 ‘구조적 결측 보완’</h2>
+
+      <p>
+        결측이 집중된 컬럼을 단순 제거(dropna)하면 표본이 크게 감소합니다.
+        그래서 <strong>Age_group × Job × Housing</strong> 그룹별 최빈값(mode) 대체 전략을 적용해 데이터 손실을 줄였습니다.
+      </p>
+
+      <!-- ✅ 단일 이미지 1 -->
+      <img src="assets/project-a-images/step2_sample_size_original_vs_dropna.png"
+           class="article-image"
+           onclick="openModal(this)"
+           alt="Sample Size: Original vs dropna">
+
+      <h3>전처리 결과(요약)</h3>
+      <ul>
+        <li>dropna 시 표본: <strong>1000 → 522</strong> (표본 손실 큼)</li>
+        <li>그룹 최빈값 대체: Saving accounts <strong>183→0</strong>, Checking account <strong>394→0</strong></li>
+        <li>Feature Engineering: <strong>Credit_ratio = Credit amount / Duration</strong></li>
+      </ul>
+
+      <p class="sub-text">
+        결측 삭제보다 데이터 구조를 활용한 결측 보완이 정책 품질을 개선한다.
+      </p>
+
+      <!-- =======================
+           4) 모델링 & 정책(Threshold)
+      ======================== -->
+      <h2>4. 모델링 & 정책 설계: Threshold로 의사결정 품질을 조정</h2>
+
+      <p>
+        RandomForest와 XGBoost를 비교했고, 모델 출력 확률(P(bad))을 기반으로
+        <strong>proba ≥ threshold → Reject</strong>, <strong>proba &lt; threshold → Approve</strong>
+        정책을 정의했습니다.
+      </p>
+
+      <!-- ✅ 단일 이미지 2 -->
+      <img src="assets/project-a-images/step3_bad_recall_vs_threshold.png"
+           class="article-image"
+           onclick="openModal(this)"
+           alt="Bad Recall vs Threshold">
+
+      <p class="sub-text">
+        Threshold는 “거절을 얼마나 할 것인가?”를 조절하는 레버이며,
+        bad recall(리스크 차단)과 승인율(비즈니스)을 트레이드오프 관계로 만듭니다.
+      </p>
+      <h3>모델이 중요하게 본 리스크 요인 (Permutation Importance)</h3>
+
+      <p class="sub-text">
+        정책을 설계할 때는 성능뿐 아니라 “무엇을 근거로 승인/거절을 판단하는지”가 중요합니다.
+        런치 후보(RandomForest) 기준으로 Validation 데이터에서 <strong>Permutation Importance(AUC)</strong>를 계산해
+        모델이 실제로 성능에 기여한 핵심 변수를 확인했습니다.
+      </p>
+
+      <p class="sub-text">
+        결과적으로 모델은 고객 특성보다 <strong>상환 부담(대출금액/기간)</strong>을 더 중요한 리스크 신호로 사용했습니다.
+        특히 <strong>Credit_ratio(대출금액/기간)</strong>가 최상위로 나타나, Feature Engineering이 정책 설계에 유의미하게 기여했음을 확인했습니다.
+      </p>
+
+      <img src="assets/project-a-images/step3_perm_importance_rf.png"
+           class="article-image"
+           onclick="openModal(this)"
+           alt="Key Risk Drivers (Permutation Importance - RandomForest)">
+
+      <!-- =======================
+           5) KPI로 번역: Expected Profit
+      ======================== -->
+      <h2>5. 성능을 KPI로 번역: Expected Profit</h2>
+
+      <p>
+        정책은 최종적으로 돈으로 평가되어야 하므로 손익을 아래처럼 단순화했습니다.
+      </p>
+      <ul>
+        <li>승인 1건당 기대 이익: <strong>+1</strong></li>
+        <li>부실 승인 1건당 기대 손실: <strong>-5</strong></li>
+        <li><strong>Expected Profit = Approved×1 − BadApproved×5</strong></li>
+      </ul>
+
+      <p class="sub-text">
+        “모델 우열”이 아니라, 손익 구조와 운영 제약(승인율 가드레일)이 최적 정책을 결정합니다.
+        (Hero 슬라이드의 Profit 곡선에서 이 트레이드오프가 가장 명확하게 드러납니다.)
+      </p>
+
+      <!-- =======================
+           6) 결과: Control vs Treatment
+      ======================== -->
+      <h2>6. 숫자로 증명: Control 대비 Treatment 개선</h2>
+
+      <p>
+        A/B 테스트 설계를 위해 현행 룰 기반 정책을 Control로 정의하고,
+        Validation 기준(승인율 가드레일 ≥ 60%)에서 최적 조합을 Treatment 후보로 선정했습니다.
+      </p>
+
+      <!-- ✅ 단일 이미지 3 -->
+      <img src="assets/project-a-images/step5_control_vs_treatment_val.png"
+           class="article-image"
+           onclick="openModal(this)"
+           alt="Control vs Treatment (VAL)">
+
+      <ul>
+        <li><strong>Control (Rule-based)</strong>: Bad Approval Rate 0.375</li>
+        <li><strong>Treatment (RF @ 0.35)</strong>: Bad Approval Rate <span style="color:#007BFF; font-weight:700;">0.1875</span></li>
+        <li class="sub-text">per-1000 impact(VAL): bad 승인 수를 대략 255 → 120(−135) 수준으로 낮추는 방향의 개선</li>
+      </ul>
+
+      <!-- =======================
+           7) 운영 적용: A/B 테스트 초안 (짧게)
+      ======================== -->
+      <h2>7. 운영 적용: KPI Tree 기반 A/B 테스트 설계(요약)</h2>
+
+      <div class="concept-box">
+        <p style="margin:0;">
+          <strong>North Star:</strong> Expected Profit<br>
+          <strong>Primary:</strong> Bad Approval Rate, Approval Rate<br>
+          <strong>Guardrails:</strong> 승인 전환율 급락, 심사 리드타임 증가, CS/컴플레인 증가
+        </p>
+      </div>
+
+      <ul>
+        <li><strong>Control(A)</strong>: 현행(룰 기반) 정책</li>
+        <li><strong>Treatment(B)</strong>: RandomForest + threshold 0.35</li>
+        <li><strong>Split</strong>: 20% Treatment / 80% Control → 점진 롤아웃(20%→50%→100%)</li>
+        <li><strong>샘플사이즈(근사)</strong>: 그룹당 623, 총 유입 3115(치료군 20% 가정)</li>
+      </ul>
+
+      <!-- =======================
+           8) Technical Skills
+      ======================== -->
+      <h2>8. 활용 기술 (Technical Skills)</h2>
+      <div class="tech-tags">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">pandas</span>
+        <span class="tech-tag">NumPy</span>
+        <span class="tech-tag">scikit-learn</span>
+        <span class="tech-tag">XGBoost</span>
+        <span class="tech-tag">Pipeline</span>
+        <span class="tech-tag">OneHotEncoder</span>
+        <span class="tech-tag">Imputation</span>
+        <span class="tech-tag">Threshold Optimization</span>
+        <span class="tech-tag">Cost-sensitive KPI</span>
+        <span class="tech-tag">A/B Test Design</span>
+        <span class="tech-tag">Sample Size Estimation</span>
+      </div>
+
+      <!-- =======================
+           (참고) 7장 버전 이미지 목록
+           1) step4_expected_profit_vs_threshold.png
+           2) step5_badrecall_approval_vs_threshold.png
+           3) step1_class_distribution.png
+           4) step1_bad_rate_by_housing.png (또는 step1_risk_by_age_group.png)
+           5) step2_sample_size_original_vs_dropna.png
+           6) step3_bad_recall_vs_threshold.png
+           7) step5_control_vs_treatment_val.png
+      ======================== -->
+
+    </div>
+  </div>
+</main>
+
+<!-- =======================
+     Slideshow JS (project-d 방식)
+======================== -->
+<script>
+  // 그룹별 현재 슬라이드 번호 저장
+  const slideIndex = {
+    "slides-1": 1,
+    "slides-2": 1
+  };
+
+  function showSlides(n, groupClass) {
+    const slides = document.getElementsByClassName(groupClass);
+    if (!slides || slides.length === 0) return;
+
+    if (n > slides.length) slideIndex[groupClass] = 1;
+    if (n < 1) slideIndex[groupClass] = slides.length;
+
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex[groupClass] - 1].style.display = "block";
+  }
+
+  function plusSlides(n, groupClass) {
+    showSlides(slideIndex[groupClass] += n, groupClass);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    showSlides(1, "slides-1");
+    showSlides(1, "slides-2");
+  });
+</script>
+
+<!-- =======================
+     Image Modal (project-d 방식)
+======================== -->
+<div id="imageModal" class="modal" onclick="closeModal()">
   <span class="close">&times;</span>
-  <img class="modal-content" id="img01">
-  <a class="prev-modal" onclick="plusSlidesModal(-1)">&#10094;</a>
-  <a class="next-modal" onclick="plusSlidesModal(1)">&#10095;</a>
+  <img class="modal-content" id="modalImg" alt="modal image">
 </div>
 
 <script>
-    var modal = document.getElementById("myModal");
-    var modalImg = document.getElementById("img01");
-    var prevBtn = document.querySelector(".prev-modal");
-    var nextBtn = document.querySelector(".next-modal");
-    var currentModalImages = [];
-    var currentModalImageIndex = 0;
+  function openModal(img) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+  }
 
-    function openModal(element) {
-        modal.style.display = "flex";
-        modalImg.src = element.src;
-
-        // Check if the clicked image is part of a carousel
-        let parentCarousel = element.closest('.carousel');
-        if (parentCarousel) {
-            currentModalImages = Array.from(parentCarousel.querySelectorAll('.carousel-item img'));
-            currentModalImageIndex = currentModalImages.indexOf(element);
-            if (currentModalImages.length > 1) {
-                prevBtn.style.display = "block";
-                nextBtn.style.display = "block";
-            } else {
-                prevBtn.style.display = "none";
-                nextBtn.style.display = "none";
-            }
-        } else {
-            // It's a single image, not part of a carousel
-            currentModalImages = [element];
-            currentModalImageIndex = 0;
-            prevBtn.style.display = "none";
-            nextBtn.style.display = "none";
-        }
-    }
-
-    function plusSlidesModal(n) {
-        currentModalImageIndex += n;
-        if (currentModalImageIndex >= currentModalImages.length) {
-            currentModalImageIndex = 0;
-        }
-        if (currentModalImageIndex < 0) {
-            currentModalImageIndex = currentModalImages.length - 1;
-        }
-        modalImg.src = currentModalImages[currentModalImageIndex].src;
-    }
-
-    var span = document.getElementsByClassName("close")[0];
-    span.onclick = function() { 
-        modal.style.display = "none";
-    }
-
-    modal.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    // Toggle technical skills section
-    const toggleButton = document.getElementById('toggleTechnicalSkills');
-    const technicalSkillsDetails = document.getElementById('technical-skills-details');
-
-    toggleButton.addEventListener('click', function() {
-        if (technicalSkillsDetails.style.display === 'none') {
-            technicalSkillsDetails.style.display = 'block';
-            toggleButton.textContent = '접기';
-        } else {
-            technicalSkillsDetails.style.display = 'none';
-            toggleButton.textContent = '자세히 보기';
-        }
-    });
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
 </script>
 
 </body>
