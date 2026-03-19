@@ -1,253 +1,517 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 3 - 원석 액세서리 쇼핑몰 '선택과 집중' 성장 전략</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project - 원석 액세서리 쇼핑몰 ‘선택과 집중’ 성장 전략</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about">About Me</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="study.html">Study</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+  <nav>
+    <button class="hamburger-menu" aria-label="메뉴 열기">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </button>
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./index.html#about">About Me</a></li>
+      <li><a href="./index.html#strengths">Strenghts</a></li>
+      <li><a href="./portfolio.html">Portfolio</a></li>
+      <li><a href="./study.html">Study</a></li>
+      <li><a href="./index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <main>
-        <div class="content-container">
-            <div class="project-detail-container">
-                <h1>Project 3: 원석 액세서리 쇼핑몰 '선택과 집중' 성장 전략</h1>
-        <div style="text-align: right;">
-            <p>프로젝트 기간: 2025.04.07 ~ 2025.05.07</p>
+<main>
+  <div class="content-container">
+    <div class="project-detail-container">
+
+      <!-- =======================
+           0) HERO / SUMMARY
+      ======================== -->
+      <h1>
+        “광고! 무조건 매출과 연결되는가?”<br/>
+        <small>원석 액세서리 쇼핑몰 ‘선택과 집중’ 성장 전략</small>
+      </h1>
+
+      <div class="project-period">
+        <p>프로젝트 기간: 2025.03.14 ~ 2025.03.26</p>
+      </div>
+
+      <p style="text-align:center;">
+        <strong>
+          광고비를 늘려도 매출은 정체될 수 있습니다. <br/>
+          저는 광고 의존 성장의 한계를 <span style="color:#007BFF;">광고·리텐션·비회원·상품 구조</span>로 분해하고,
+          <span style="color:#007BFF;">‘될 놈(고객·상품)’에 집중하는 성장 전략</span>을 설계했습니다.
+        </strong>
+      </p>
+
+      <p class="sub-text" style="text-align:center;">
+        핵심 메시지: 광고는 “더 집행하는 것”보다, <strong>매출이 나는 구조(첫 구매·리텐션·상품 포트폴리오)</strong>와 함께 설계되어야 합니다.
+      </p>
+
+      <div class="slideshow-container" style="max-width: 800px; position: relative; margin: 20px auto;">
+        <div class="mySlides slides-1 fade">
+          <img src="assets/project-c-images/ad_sales_trend.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="광고 매출 추이">
+        </div>
+        <div class="mySlides slides-1 fade">
+          <img src="assets/project-c-images/member_guest_pattern.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="회원 비회원 패턴 분석">
+        </div>
+        <div class="mySlides slides-1 fade">
+          <img src="assets/project-c-images/strategy_summary_cards.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="핵심 전략 제안 요약">
         </div>
 
-                <h2>1. 문제 정의: 빛을 잃어가는 원석</h2>
-                <p><strong>"시장 성장에도 불구하고, 리코맨즈는 광고비 증가에도 매출 정체를 겪고 있습니다. 과거의 성공 방식이 더 이상 통하지 않는 상황, 성장 동력 회복을 위한 데이터 기반의 새로운 전략이 시급합니다."</strong></p>
-                <p><span style="font-size: 0.85em; color: #545454">수공예 원석 액세서리 쇼핑몰 '리코맨즈'는 겉보기에는 성장하는 주얼리 시장의 수혜를 받는 것처럼 보였습니다. 하지만 내부 데이터를 깊이 들여다본 결과, 지속적인 매출 하락과 함께 심각한 성장 정체 문제에 직면해 있었습니다.</span></p>
-                
-                <!-- Slideshow container -->
-                <div class="slideshow-container" style="max-width: 800px; position: relative; margin: 20px auto;">
-                  <div class="mySlides fade">
-                    <img src="assets/project-c-images/101.png" style="width:100%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
-                  </div>
-                  <div class="mySlides fade">
-                    <img src="assets/project-c-images/102.png" style="width:100%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
-                  </div>
-                  <div class="mySlides fade">
-                    <img src="assets/project-c-images/103.png" style="width:100%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
-                  </div>
-                  <div class="mySlides fade">
-                    <img src="assets/project-c-images/104.png" style="width:100%; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
-                  </div>
-                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                </div>
+        <a class="prev" onclick="plusSlides(-1, 'slides-1')">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 'slides-1')">&#10095;</a>
+      </div>
 
-                <ul>
-                    <li><strong>문제 1. 광고 효율성 악화: </strong>과거에 비해 광고비 지출은 늘었지만, 광고를 통한 매출 창출 능력(ROAS)은 지속적으로 하락하며 광고에 의존한 성장이 한계에 부딪혔습니다.</li>
-                    <li><strong>문제 2. 낮은 고객 리텐션: </strong>코호트 분석 결과, 고객의 재구매는 대부분 첫 구매 후 3개월 이내에만 집중되었고, 그 이후에는 급격히 감소하여 장기적인 고객 관계 형성에 실패하고 있었습니다.</li>
-                    <li><strong>문제 3. 숨겨진 비효율: </strong>전체 매출의 69%를 차지하는 '비회원' 고객은 높은 비중에도 불구하고 객단가가 낮아 실질적인 성장에는 크게 기여하지 못하고 있었습니다.</li>
-                </ul>
-                <p><strong>핵심질문: </strong></p>
-                <ul>
-                    <li>"왜 리코맨즈의 원석은 빛을 잃어가고 있는가?"</li>
-                    <li>한정된 자원을 어디에 집중해야 이 저성장 국면을 돌파할 수 있을까?</li>
-                    <li>데이터 속에 숨겨진 '될 놈', 즉 우리의 핵심 타겟 고객과 핵심 상품은 누구인가?</li>
-                </ul>
+      <div style="margin: 18px auto 10px; padding: 14px 16px; border: 1px solid #e6e6e6; border-radius: 12px; background: #fafafa; max-width: 920px;">
+        <ul style="margin:0; padding-left: 18px;">
+          <li><strong>광고 효율 약화</strong>: 과거에는 광고 유입이 매출을 견인했지만, 시간이 갈수록 영향력이 약화</li>
+          <li><strong>비회원 구조</strong>: 전체 고객의 <strong>69%</strong>가 비회원이며, 객단가가 회원보다 낮음</li>
+          <li><strong>리텐션 골든타임</strong>: 재구매는 <strong>첫 구매 후 3개월 이내</strong>에 집중</li>
+          <li><strong>전략 결론</strong>: 광고 확대보다 <strong>타겟팅·고객가치 증대·첫 구매 유도·상품 집중</strong>이 우선</li>
+        </ul>
+      </div>
 
-                <h2>2. 분석 과정 및 역할</h2>
-                <p><span style="font-size: 0.85em; color: #545454">저는 흩어져 있던 광고, 주문, 리뷰 데이터를 통합하여 문제의 근본 원인을 다각도로 분석하고, 데이터에 기반한 구체적인 실행 전략을 도출했습니다.</span></p>
-                
-                <h3>Step 1. 데이터 통합 및 다각적 문제 진단</h3>
-                <p><span style="font-size: 0.85em; color: #545454">정확한 진단을 위해 여러 곳에 흩어져 있던 데이터를 하나로 모으고 정제하는 것부터 시작했습니다.</span></p>
-                <ul>
-                    <li><strong>데이터 통합 및 전처리: </strong>주문 데이터(2만 건), 상품 데이터(158개), 광고 데이터(Looker Studio), 리뷰 데이터(6천 건)를 통합했습니다. 특히 리뷰 데이터는 Kiwi(한국어 형태소 분석기)와 정규표현식을 활용해 특수문자, 불용어 등을 제거하여 분석 가능한 형태로 정제했습니다.</li>
-                    <li><strong>광고 효율성 분석(ROAS):</strong>과거 히트 상품('호안오닉스 카네스톤', ROAS 2.92)과 현재 주력 상품('자마노 아가페스톤', ROAS 2.06)의 광고 효율을 비교 분석한 결과, <strong>현재 광고 효율이 29%나 감소</strong>했음을 정량적으로 확인했습니다.</li>
-                    <li><strong>고객 리텐션 분석(Cohort): </strong>코호트 분석을 통해 <strong>재구매의 '골든타임'이 첫 구매 후 3개월 이내임</strong>을 발견했습니다. 또한, 전체 고객의 69%를 차지하는 비회원이 회원보다 객단가가 낮아 LTV(고객 생애 가치) 확보에 어려움이 있음을 확인했습니다.</li>
-                </ul>
-                <img src="assets/project-c-images/105.png" alt="분석 이미지 5" style="width:100%; max-width:600px; display:block; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
 
-                <h3>Step 2. '될 놈'을 찾기 위한 포트폴리오 최적화</h3>
-                <p><span style="font-size: 0.85em; color: #545454">모든 상품에 자원을 분산하는 대신, 진정으로 성장 가능성이 있는 '될 놈' 상품을 선별하는 데 집중했습니다.</span></p>
-                <ul>
-                    <li><strong>단계적 필터링(Step-wise Filtering) 전략: </strong>매출 상위 12개 상품을 대상으로, 아래 3가지 기준을 순차적으로 적용하여 부진한 상품을 체계적으로 걸러냈습니다.</li>
-                    <ul>
-                        <li><strong>1차 필터 (단기 인기 후 급감): </strong>초기 반짝 인기에 그치고 꾸준한 매출로 이어지지 못한 상품 제외.</li>
-                        <li><strong>2차 필터 (회원 기반 약함): </strong>충성도 높은 회원들의 구매가 뒷받침되지 않아 리텐션 전략에 부적합한 상품 제외.</li>
-                        <li><strong>3차 필터 (단종/판매 중단): </strong>판매가 중단되어 더 이상 활용할 수 없는 상품 제외.</li>
-                    </ul>
-                    <li><strong>新 스테디셀러 발굴: </strong>이 필터링 과정을 통해, <strong>'호안오닉스 카네스톤', '호안오닉스 팬텀골드' 등 잠재력 높은 4개의 상품을 최종 '될 놈' 후보로 발굴</strong>했습니다.</li>
-                </ul>
+      <!-- =======================
+           1) 도입
+      ======================== -->
+      <h2>1. 도입: 광고비 증가가 매출 증가를 보장하지 않는다</h2>
 
-                <h3 style="margin-top: 40px;">Infographic: '될 놈' 선별 과정 요약</h3>
-                <iframe src="infographic.html" id="infographic-iframe" width="100%" height=1460px frameborder="0" scrolling="no" onload="this.style.height = this.contentWindow.document.body.scrollHeight + 'px';" style="border: 2px solid #ccc; margin-top: 10px; margin-bottom: 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></iframe>
-                
-                <h3>Step 3. 비회원 타겟 시뮬레이션 및 리뷰 기반 제품 개선</h3>
-                <p><span style="font-size: 0.85em; color: #545454">가장 큰 비중을 차지하는 '비회원'을 성장 동력으로 전환하기 위한 전략을 데이터로 검증하고, 질적 데이터 분석을 통해 제품 자체의 경쟁력을 강화했습니다.</span></p>
-                <ul>
-                    <li><strong>매출 증대 시뮬레이션: </strong>만약 <strong>전체 고객의 69%를 차지하는 비회원이 첫 구매 시, 회원들에게 인기 있는 상품을 구매하도록 유도</strong>한다면 어떤 변화가 일어날지 시뮬레이션했습니다. 그 결과, 이 전략만으로도 <strong>총매출이 16% 상승</strong>할 수 있다는 잠재력을 확인했습니다. 이는 비회원을 타겟으로 한 첫 구매 경험 설계가 매출 반등의 핵심임을 입증합니다.</li>
-                    <li><strong>LLM 기반 리뷰 분석:</strong> 3천여 건의 리뷰 텍스트를 <strong>LLM(Gemini) API</strong>와 연동하여 분석했습니다. 단순히 긍정/부정을 나누는 것을 넘어, '줄이 얇고 잘 끊어진다', '원석/알 크기가 작다', '생각했던 색상과 다르다' 등 고객들이 공통적으로 지적하는 <strong>구체적인 제품 단점을 도출</strong>했습니다. 이는 데이터 기반의 실질적인 제품 개선과 상품 상세 페이지 문구 수정의 근거를 마련해주었습니다.</li>
-                </ul>
+      <p>
+        이커머스 업계에서는 성장을 위해 광고비를 늘리지만,
+        광고 단가 상승과 채널 포화로 <strong>“더 쓰는데 덜 남는”</strong> 상황이 자주 발생합니다.
+      </p>
 
-                <div style="margin: 40px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
-                <iframe id="simulation-frame" src="simulation.html" width="100%" height=980px frameborder="0" scrolling="no" onload="this.style.height = this.contentWindow.document.body.scrollHeight + 'px';" style="border: 2px solid #ccc; margin-top: 10px; margin-bottom: 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></iframe>
-                </div>
+      <div class="concept-box">
+        <p style="margin:0;">
+          <strong>짧은 사례: Warby Parker</strong><br/>
+          초기에는 퍼포먼스 마케팅으로 빠르게 성장했지만,
+          광고 비용 상승과 고객 획득 비용 증가로 효율이 악화되며
+          <strong>브랜드 경험·제품 경쟁력·리텐션 중심 구조</strong>로 성장 전략을 전환한 사례로 자주 언급됩니다.
+          <br/><span class="sub-text">→ 광고를 더 집행하는 것보다, “광고가 먹히는 구조”를 먼저 설계해야 한다는 점에서 본 프로젝트와 맞닿아 있습니다.</span>
+        </p>
+      </div>
 
-                <h2>3. 최종 전략: '될 놈'에게 집중하라</h2>
-                <p><span style="font-size: 0.85em; color: #545454">분석 결과를 종합하여, '모든 곳에 자원을 분산하는 대신, 데이터로 검증된 '될 놈'(고객과 상품)에 집중'하는 4단계 핵심 전략을 제안했습니다.</span></p>
-                <ol>
-                    <li><strong>광고 타겟팅 재설정: </strong>과거 성공 경험(높은 ROAS)에 기반하여, 구매력 있는 '25-44세 남성'을 핵심 타겟으로 재설정하고 마케팅 자원을 집중.</li>
-                    <li><strong>고객 가치 증대: </strong>재구매 '골든타임'인 '첫 구매 후 3개월 이내'에 쿠폰, 이벤트 등을 통해 재구매를 유도하여 LTV 극대화.</li>
-                    <li><strong>회원처럼 첫 구매 유도: </strong>압도적 다수인 '비회원'에게 회원 인기 상품(객단가 높은 상품)을 전략적으로 노출하여 첫 구매 경험을 개선하고, 자연스럽게 회원 가입으로 유도.</li>
-                    <li><strong>상품 포트폴리오 집중: </strong>단계적 필터링으로 발굴한 '新 스테디셀러 4종'을 중심으로 BEST 카테고리를 재편하고, 리뷰 분석 결과를 반영하여 제품 품질 개선.</li>
-                </ol>
-                <img src="assets/project-c-images/106.png" alt="분석 이미지 6" style="width:100%; max-width:600px; display:block; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)">
+      <p><strong>리코맨즈 역시 같은 문제를 겪고 있었습니다.</strong></p>
+      <ul>
+        <li>광고비를 써도 매출 정체가 반복된다</li>
+        <li>광고 효율 하락의 원인을 고객 구조·상품 구조·리텐션 관점에서 설명할 필요가 있다</li>
+        <li>분석 결과를 실제 운영 가능한 성장 전략으로 연결해야 한다</li>
+      </ul>
 
-                <h2>4. 활용 기술 (Technical Skills)</h2>
-                
-                <div class="tech-tags">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Tableau</span>
-                    <span class="tech-tag">Cohort Analysis</span>
-                    <span class="tech-tag">LLM API (Gemini)</span>
-                </div>
-                <button id="toggleTechnicalSkillsC" class="cta-button" style="margin-top: 20px; margin-bottom: 20px;">자세히 보기</button>
-                <div id="technical-skills-details-c" style="display: none;">
-                    <ul>
-                        <li><strong>언어/라이브러리 (Language & Libraries):</strong></li>
-                        <ul>
-                            <li>Python, Pandas, Matplotlib, Seaborn</li>
-                        </ul>
-                        <li><strong>분석 기법 및 방법론 (Analysis Techniques & Methodologies):</strong></li>
-                        <ul>
-                            <li><strong>코호트 분석 (Cohort Analysis): </strong>간 흐름에 따른 고객 그룹의 재구매율 변화를 추적하여 리텐션 패턴을 분석.</li>
-                            <li><strong>ROAS 분석 (Return on Ad Spend): </strong>고비 대비 매출액을 계산하여 캠페인별, 상품별 광고 효율성을 정량적으로 평가.</li>
-                            <li><strong>단계적 필터링 (Step-wise Filtering): </strong>다수의 후보군에서 설정된 기준에 따라 단계적으로 대상을 압축해 나가는 체계적인 의사결정 기법.</li>
-                            <li><strong>시뮬레이션 (Simulation): </strong>특정 전략(비회원 첫 구매 상품 전환)이 실행되었을 때의 잠재적 효과(매출 증대)를 데이터 기반으로 예측.</li>
-                        </ul>
-                        <li><strong>자연어 처리 (NLP):</strong></li>
-                        <ul>
-                            <li><strong>Kiwi(Korean Intelligent Word Identifier): </strong>한국어 리뷰 텍스트의 형태소를 분석하고 명사를 추출하는 등 전처리 과정에 활용.</li>
-                            <li><strong>LLM API (Gemini): </strong>대량의 텍스트 데이터에서 핵심 장단점을 요약하고, 특정 키워드의 빈도를 추출하는 등 정성적 데이터의 정량화 및 인사이트 도출에 활용.</li>
-                        </ul>
-                    </ul>
-                </div>
-            </div>
+      <img src="assets/project-c-images/overall_sales_trend.png"
+           class="article-image"
+           onclick="openModal(this)"
+           alt="전체 매출 동향">
+
+      <p class="sub-text">
+        지속적인 매출 하락과 정체는, 단순한 광고 확대만으로는 회복이 어렵다는 점을 보여줍니다.
+      </p>
+
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
+
+      <!-- =======================
+           2) 문제 정의
+      ======================== -->
+      <h2>2. 문제 정의: 광고 의존 성장의 한계를 ‘구조’로 풀어야 한다</h2>
+
+      <p>
+        단순히 ROAS가 떨어졌다는 사실보다 중요한 것은,
+        광고가 성과를 내기 어려운 <strong>구조적 원인</strong>을 파악하고
+        <strong>어디에 자원을 집중할지</strong> 결정하는 것입니다.
+      </p>
+
+      <ul>
+        <li><strong>문제 1</strong>: 광고 유입 구매 영향력 하락</li>
+        <li><strong>문제 2</strong>: 첫 구매 이후 리텐션 약화</li>
+        <li><strong>문제 3</strong>: 비회원 비중은 크지만 객단가는 낮음</li>
+        <li><strong>문제 4</strong>: 모든 상품을 넓게 가져가기보다, 집중할 상품 포트폴리오가 필요</li>
+      </ul>
+
+      <p class="sub-text">
+        결론적으로 “광고를 더 쓰는 문제”가 아니라,
+        <strong>누구에게, 어떤 첫 구매를 설계하고, 어떤 상품에 집중할 것인가</strong>의 문제로 재정의했습니다.
+      </p>
+
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
+
+      <!-- =======================
+           3) 데이터 & 역할
+      ======================== -->
+      <h2>3. 데이터 & 역할</h2>
+
+      <p class="sub-text">
+        저는 광고·주문·상품·리뷰 데이터를 통합해, 진단 → 가설 → 검증 → 실행 전략까지 연결했습니다.
+      </p>
+
+      <ul>
+        <li><strong>데이터</strong>: 주문(약 2만), 상품(158), 광고 데이터, 리뷰(약 6천)</li>
+        <li><strong>전처리</strong>: 주문/상품 구조 정리, 광고/리뷰 전처리, 리뷰 텍스트 정제</li>
+        <li><strong>분석 프레임</strong>: 광고 → 리텐션 → 회원/비회원 → 포트폴리오 → 전략</li>
+      </ul>
+
+      <img src="assets/project-c-images/data_integration_diagnosis.png"
+           class="article-image"
+           onclick="openModal(this)"
+           alt="데이터 통합 및 다각적 문제 진단">
+
+      <p class="sub-text">
+        광고만 따로 본 것이 아니라 주문, 상품, 리뷰를 함께 연결해 문제를 다각도로 진단했습니다.
+      </p>
+
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
+
+      <!-- =======================
+           4) 광고 진단
+      ======================== -->
+      <h2>4. 광고 진단: “쓰면 팔린다” 가정이 무너진 지점</h2>
+
+      <p>
+        광고 유입 구매와 매출 흐름을 함께 비교한 결과,
+        과거에는 광고가 매출을 견인했지만 시간이 갈수록 영향력이 약화되었습니다.
+        이는 광고 효과 약화와 함께 <strong>비광고 기반 성장 구조의 필요성</strong>을 보여줍니다.
+      </p>
+
+      <div class="slideshow-container" style="max-width: 800px; position: relative; margin: 20px auto;">
+        <div class="mySlides slides-2 fade">
+          <img src="assets/project-c-images/overall_sales_trend.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="전체 매출 동향">
         </div>
-    </main>
+        <div class="mySlides slides-2 fade">
+          <img src="assets/project-c-images/ad_sales_trend.png"
+               style="width:100%; box-shadow:0 4px 8px rgba(0,0,0,0.2);" onclick="openModal(this)" alt="광고 매출 추이">
+        </div>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="img01">
-      <a class="prev-modal" onclick="plusSlidesModal(-1)">&#10094;</a>
-      <a class="next-modal" onclick="plusSlidesModal(1)">&#10095;</a>
+        <a class="prev" onclick="plusSlides(-1, 'slides-2')">&#10094;</a>
+        <a class="next" onclick="plusSlides(1, 'slides-2')">&#10095;</a>
+      </div>
+
+      <h3>핵심 관찰</h3>
+      <ul>
+        <li><strong>광고 구매율 하락</strong>: 시간이 갈수록 광고 유입 구매 영향력 감소</li>
+        <li><strong>매출 정체</strong>: 광고 집행에도 불구하고 지속 성장으로 연결되지 못함</li>
+        <li><strong>의미</strong>: 광고 확대보다, 광고 효율이 잘 나는 고객/상품 구조로 전환이 필요</li>
+      </ul>
+
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
+
+      <!-- =======================
+           5) 리텐션
+      ======================== -->
+      <h2>5. 리텐션 분석: 재구매 골든타임은 ‘첫 3개월’</h2>
+
+      <p>
+        고객의 재구매 흐름을 분석한 결과,
+        재구매는 <strong>첫 구매 후 3개월 이내</strong>에 가장 활발하게 나타났습니다.
+        즉, 첫 구매 이후의 90일이 고객가치 증대를 위한 핵심 구간이었습니다.
+      </p>
+
+      <img src="assets/project-c-images/retention_3month_strategy.png"
+           class="article-image"
+           onclick="openModal(this)"
+           alt="재구매 리텐션 분석">
+
+      <h3>핵심 관찰</h3>
+      <ul>
+        <li><strong>리텐션 골든타임</strong>: M+3 이전 구간에서 재구매 집중</li>
+        <li><strong>의미</strong>: 첫 구매 후 3개월 내 쿠폰, 추천, 이벤트 설계가 중요</li>
+        <li><strong>전략 연결</strong>: 고객가치 증대 전략은 리텐션 90일 안에서 실행되어야 함</li>
+      </ul>
+
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
+
+      <!-- =======================
+           6) 회원/비회원
+      ======================== -->
+      <h2>6. 회원/비회원 구조: “회원 전환”보다 먼저 첫 구매 경험이 중요했다</h2>
+
+      <p>
+        전체 고객 중 비회원 비중은 매우 높았지만,
+        객단가는 회원보다 낮았습니다.
+        즉, 비회원은 이미 큰 볼륨을 차지하고 있었고,
+        이들의 <strong>첫 구매 경험과 구매 믹스</strong>를 개선하는 것이 더 직접적인 성장 레버였습니다.
+      </p>
+
+      <img src="assets/project-c-images/member_guest_pattern.png"
+           class="article-image"
+           onclick="openModal(this)"
+           alt="회원 비회원 패턴 분석">
+
+      <h3>핵심 관찰</h3>
+      <ul>
+        <li><strong>비회원 비중</strong>: 전체 고객의 69%</li>
+        <li><strong>객단가 차이</strong>: 비회원 객단가가 회원보다 낮음</li>
+        <li><strong>의미</strong>: 회원 전환 캠페인보다 먼저, 비회원 첫 구매 설계를 개선하는 것이 효과적</li>
+      </ul>
+
+      <div style="margin: 26px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+        <iframe
+          id="simulation-frame"
+          src="simulation.html"
+          width="100%"
+          height="980"
+          frameborder="0"
+          scrolling="no"
+          onload="autoResizeIframe('simulation-frame')"
+          style="border: 2px solid #ccc; margin-top: 10px; margin-bottom: 14px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
+          title="비회원 첫구매 전환 시뮬레이션"
+        ></iframe>
+      </div>
+
+      <p class="sub-text">
+        시뮬레이션을 통해, 비회원에게 회원 수준의 구매 행동을 유도할 경우 매출 개선 가능성을 확인했습니다.
+      </p>
+
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
+
+      <!-- =======================
+           7) 포트폴리오
+      ======================== -->
+      <h2>7. 상품 포트폴리오: 분산이 아니라 ‘선택과 집중’</h2>
+
+      <p>
+        PDF 장표 분석을 통해, 신상품이 항상 순증 매출로 연결되지는 않았고
+        기존 상품 수요를 잠식하는 <strong>카니발라이제이션 가능성</strong>도 확인했습니다.
+        따라서 모든 상품을 넓게 가져가기보다,
+        <strong>지속적으로 팔릴 가능성이 높은 상품군에 자원을 집중</strong>하는 전략이 필요했습니다.
+      </p>
+
+      <h3>‘될 놈’ 선별 기준</h3>
+      <ul>
+        <li><strong>1차</strong>: 반짝 인기 후 급감하는 상품 제외</li>
+        <li><strong>2차</strong>: 회원 기반이 약해 재구매로 이어지기 어려운 상품 제외</li>
+        <li><strong>3차</strong>: 지속 판매 및 집중 운영이 가능한 상품만 선별</li>
+      </ul>
+
+      <p class="sub-text">
+        아래 인포그래픽은 위 기준을 바탕으로, 최종적으로 어떤 상품군에 집중할지 정리한 결과물입니다.
+      </p>
+
+      <iframe
+        src="infographic.html"
+        id="infographic-iframe"
+        width="100%"
+        height="1460"
+        frameborder="0"
+        scrolling="no"
+        onload="autoResizeIframe('infographic-iframe')"
+        style="border: 2px solid #ccc; margin-top: 10px; margin-bottom: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
+        title="될 놈 선별 인포그래픽"
+      ></iframe>
+
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
+
+      <!-- =======================
+           8) 리뷰 분석
+      ======================== -->
+      <h2>8. 리뷰 분석: 정성 데이터를 개선 액션으로 번역</h2>
+
+      <p>
+        리뷰 텍스트는 단순 참고 자료가 아니라,
+        어떤 상품을 더 밀어야 하고 무엇을 보완해야 하는지 알려주는 신호였습니다.
+        PDF 장표에서는 리뷰 텍스트를 바탕으로 단점 키워드를 구조화해,
+        제품 개선과 상세페이지 보완 방향으로 연결했습니다.
+      </p>
+
+      <ul>
+        <li><strong>내구성 관련 불만</strong>: 줄 끊어짐, 약한 마감 → 소재/두께/AS 안내 보완</li>
+        <li><strong>사이즈/착용감 불만</strong>: 상세 규격과 착용 예시 강화 필요</li>
+        <li><strong>색상/톤 차이</strong>: 원석 특성상 편차 안내와 상세페이지 정보 보완 필요</li>
+      </ul>
+
+      <p class="sub-text">
+        즉, 상품 포트폴리오 집중은 “무엇을 밀 것인가”뿐 아니라 “무엇을 어떻게 개선할 것인가”까지 함께 설계하는 과정이었습니다.
+      </p>
+
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
+
+      <!-- =======================
+           9) 최종 전략
+      ======================== -->
+      <h2>9. 최종 전략: ‘될 놈’에게 집중하라</h2>
+
+      <p class="sub-text">
+        분석 결과를 실행 가능한 운영안으로 바꾸기 위해,
+        최종 전략을 광고·리텐션·첫 구매·포트폴리오 관점으로 정리했습니다.
+      </p>
+
+      <img src="assets/project-c-images/strategy_summary_cards.png"
+           class="article-image"
+           onclick="openModal(this)"
+           alt="핵심 전략 제안 요약">
+
+      <ol>
+        <li>
+          <strong>광고 타겟팅 전략</strong><br/>
+          <span class="sub-text"><strong>Who</strong>: 25–44세 남성</span><br/>
+          <span class="sub-text"><strong>What</strong>: 광고 예산과 캠페인을 구매력 있는 세그먼트에 집중</span><br/>
+          <span class="sub-text"><strong>KPI</strong>: ROAS, CAC</span>
+        </li>
+        <li style="margin-top: 12px;">
+          <strong>고객 가치 증대</strong><br/>
+          <span class="sub-text"><strong>Who</strong>: 첫 구매 고객</span><br/>
+          <span class="sub-text"><strong>What</strong>: 첫 3개월 내 재구매 유도 전략 운영</span><br/>
+          <span class="sub-text"><strong>KPI</strong>: 2nd purchase rate, 90d retention</span>
+        </li>
+        <li style="margin-top: 12px;">
+          <strong>회원처럼 첫 구매 유도</strong><br/>
+          <span class="sub-text"><strong>Who</strong>: 비회원 고객</span><br/>
+          <span class="sub-text"><strong>What</strong>: 객단가가 높은 상품을 전략적으로 노출해 첫 구매 믹스 개선</span><br/>
+          <span class="sub-text"><strong>KPI</strong>: AOV, first-to-second conversion</span>
+        </li>
+        <li style="margin-top: 12px;">
+          <strong>상품 포트폴리오 집중</strong><br/>
+          <span class="sub-text"><strong>Who</strong>: ‘될 놈’ 후보 상품군</span><br/>
+          <span class="sub-text"><strong>What</strong>: 집중 운영 + 리뷰 기반 개선 액션 병행</span><br/>
+          <span class="sub-text"><strong>KPI</strong>: Top SKU revenue share, repeat rate</span>
+        </li>
+      </ol>
+
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
+
+      <!-- =======================
+           10) Next Step
+      ======================== -->
+      <h2>10. Next Step: 실험과 운영으로 연결하기</h2>
+
+      <ul>
+        <li><strong>A/B 테스트</strong>: 비회원 대상 상품 추천 방식/혜택 노출안 비교</li>
+        <li><strong>리텐션 운영</strong>: 첫 구매 후 90일 시퀀스 운영 후 재구매율 추적</li>
+        <li><strong>상품 개선 검증</strong>: 리뷰 기반 개선 전/후 평점, 반품, 재구매 변화 추적</li>
+      </ul>
+
+      <hr style="border:none; border-top:1px solid #DEE2E6; margin: 30px 0;">
+
+      <!-- =======================
+           11) Technical Skills
+      ======================== -->
+      <h2>11. 활용 기술 (Technical Skills)</h2>
+
+      <div class="tech-tags">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Tableau</span>
+        <span class="tech-tag">ROAS Analysis</span>
+        <span class="tech-tag">Cohort Analysis</span>
+        <span class="tech-tag">Customer Segmentation</span>
+        <span class="tech-tag">Step-wise Filtering</span>
+        <span class="tech-tag">Text Preprocessing</span>
+        <span class="tech-tag">Simulation</span>
+      </div>
+
+      <button id="toggleTechnicalSkillsC" class="cta-button" style="margin-top: 20px; margin-bottom: 20px;">
+        자세히 보기
+      </button>
+
+      <div id="technical-skills-details-c" style="display: none;">
+        <ul>
+          <li><strong>분석 지표</strong>: ROAS, 객단가(AOV), Retention(90일), Repeat rate, Revenue concentration</li>
+          <li><strong>방법론</strong>: 코호트 분석, 회원/비회원 세그먼트 비교, 포트폴리오 집중 전략 설계</li>
+          <li><strong>정성 분석</strong>: 리뷰 전처리 및 키워드 구조화 기반 개선 포인트 도출</li>
+          <li><strong>검증</strong>: 가정 기반 시뮬레이션과 운영 실험(A/B 테스트) 연결</li>
+        </ul>
+      </div>
+
     </div>
+  </div>
+</main>
 
-    <script>
-        // Slideshow script
-        let slideIndex = 1;
-        showSlides(slideIndex);
+<!-- =======================
+     Slideshow JS
+======================== -->
+<script>
+  const slideIndex = {
+    "slides-1": 1,
+    "slides-2": 1
+  };
 
-        function plusSlides(n) {
-          showSlides(slideIndex += n);
-        }
+  function showSlides(n, groupClass) {
+    const slides = document.getElementsByClassName(groupClass);
+    if (!slides || slides.length === 0) return;
 
-        function showSlides(n) {
-          let i;
-          let slides = document.getElementsByClassName("mySlides");
-          if (n > slides.length) {slideIndex = 1}
-          if (n < 1) {slideIndex = slides.length}
-          for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-          }
-          slides[slideIndex-1].style.display = "block";
-        }
+    if (n > slides.length) slideIndex[groupClass] = 1;
+    if (n < 1) slideIndex[groupClass] = slides.length;
 
-        // Modal script
-        var modal = document.getElementById("myModal");
-        var modalImg = document.getElementById("img01");
-        var prevBtn = document.querySelector(".prev-modal");
-        var nextBtn = document.querySelector(".next-modal");
-        var currentModalImages = [];
-        var currentModalImageIndex = 0;
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex[groupClass] - 1].style.display = "block";
+  }
 
-        function openModal(element) {
-            modal.style.display = "flex";
-            modalImg.src = element.src;
+  function plusSlides(n, groupClass) {
+    showSlides(slideIndex[groupClass] += n, groupClass);
+  }
 
-            let parentContainer = element.closest('.slideshow-container');
-            if (parentContainer) {
-                currentModalImages = Array.from(parentContainer.querySelectorAll('img'));
-                currentModalImageIndex = currentModalImages.findIndex(img => img.src === element.src);
-                if (currentModalImages.length > 1) {
-                    prevBtn.style.display = "block";
-                    nextBtn.style.display = "block";
-                } else {
-                    prevBtn.style.display = "none";
-                    nextBtn.style.display = "none";
-                }
-            } else {
-                // It's a single image
-                currentModalImages = [element];
-                currentModalImageIndex = 0;
-                prevBtn.style.display = "none";
-                nextBtn.style.display = "none";
-            }
-        }
+  document.addEventListener("DOMContentLoaded", () => {
+    showSlides(1, "slides-1");
+    showSlides(1, "slides-2");
+  });
+</script>
 
-        function plusSlidesModal(n) {
-            currentModalImageIndex = (currentModalImageIndex + n + currentModalImages.length) % currentModalImages.length;
-            modalImg.src = currentModalImages[currentModalImageIndex].src;
-        }
+<!-- =======================
+     Image Modal
+======================== -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg" alt="modal image">
+</div>
 
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function() { 
-            modal.style.display = "none";
-        }
+<script>
+  function openModal(img) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+  }
 
-        modal.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
+</script>
 
-        // Iframe height auto-adjustment script
-        window.addEventListener('load', function() {
-            const iframe = document.getElementById('infographic-iframe');
-            if (iframe) {
-                iframe.onload = function() {
-                    // Add a small delay to ensure content is fully rendered before calculating height
-                    setTimeout(() => {
-                        const scrollHeight = iframe.contentWindow.document.body.scrollHeight;
-                        iframe.style.height = scrollHeight + 'px';
-                    }, 100); // 100ms delay
-                };
-            }
-        });
+<!-- =======================
+     iframe 자동 높이
+======================== -->
+<script>
+  function autoResizeIframe(iframeId) {
+    const iframe = document.getElementById(iframeId);
+    if (!iframe) return;
 
-        // Toggle technical skills section for project-c.html
-        const toggleButtonC = document.getElementById('toggleTechnicalSkillsC');
-        const technicalSkillsDetailsC = document.getElementById('technical-skills-details-c');
+    setTimeout(() => {
+      try {
+        const scrollHeight = iframe.contentWindow.document.body.scrollHeight;
+        iframe.style.height = scrollHeight + "px";
+      } catch (e) {
+        // cross-origin 이슈 무시
+      }
+    }, 120);
+  }
 
-        if (toggleButtonC && technicalSkillsDetailsC) {
-            toggleButtonC.addEventListener('click', function() {
-                if (technicalSkillsDetailsC.style.display === 'none') {
-                    technicalSkillsDetailsC.style.display = 'block';
-                    toggleButtonC.textContent = '접기';
-                } else {
-                    technicalSkillsDetailsC.style.display = 'none';
-                    toggleButtonC.textContent = '자세히 보기';
-                }
-            });
-        }
-    </script>
+  const toggleButtonC = document.getElementById("toggleTechnicalSkillsC");
+  const technicalSkillsDetailsC = document.getElementById("technical-skills-details-c");
+
+  if (toggleButtonC && technicalSkillsDetailsC) {
+    toggleButtonC.addEventListener("click", function () {
+      if (technicalSkillsDetailsC.style.display === "none") {
+        technicalSkillsDetailsC.style.display = "block";
+        toggleButtonC.textContent = "접기";
+      } else {
+        technicalSkillsDetailsC.style.display = "none";
+        toggleButtonC.textContent = "자세히 보기";
+      }
+    });
+  }
+</script>
 
 </body>
 </html>
